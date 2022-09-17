@@ -1,0 +1,20 @@
+{
+  "name": "practice-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev":"nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Alucard2169",
+  "license": "ISC",
+  "dependencies": {
+    "apicache": "^1.6.3",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jikan4.js": "^1.2.0"
+  }
+}
