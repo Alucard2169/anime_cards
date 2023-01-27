@@ -1,6 +1,6 @@
 # Anime_cards
 
-# [LIVE](https://breakable-gabardine-ant.cyclic.app/)
+# [LIVE](https://erin-woodpecker-cuff.cyclic.app/#/)
 
 Anime Cards provides you all the anime you want to know about using Jikan API (a free rest api)
 
