@@ -1,0 +1,167 @@
+.navbar{
+    width: 100%;
+    padding: .5rem 2rem;
+    background-color: black;
+    margin-bottom: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+
+.navbar .logo{
+    width: 4%;
+}
+
+.navbar .logo .mainLogo{
+    width: 100%;
+}
+
+.navbar .left{
+    margin-right: 3rem;
+    display: flex;
+    gap: 2rem;
+}
+
+
+.navbar .left .search{
+    width: 18rem;
+    height: 2rem;
+    background-color: white;
+    border-radius: 100px;
+    border: none;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: .5rem;
+    padding-left: 3rem;
+    position: relative;
+    color: orangered;
+    font-family: 'Oswald',sans-serif;
+}
+
+.navbar .left .search:focus-visible{
+    outline: none;
+    border: 2px orangered solid;
+}
+
+.navbar .left label{
+    position: relative;
+}
+
+.navbar .left label img{
+    position: absolute;
+    color: gray;
+    border: none;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 10px;
+    z-index: 10;
+}
+
+.result button{
+    border: none;
+    overflow: none;
+    border-radius: 100px;
+    width: 4rem;
+    height: 4rem;
+    margin-left: auto;
+    position: absolute;
+    z-index: 110;
+    right: -30px;
+    top: -28px;
+    cursor: pointer;
+    background-color: orange;
+    display: none;
+}
+.result button img{
+    border: none;
+    width: 100%;
+}
+
+.result{
+    width: 90%;
+    height: auto;
+    background-color: transparent;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 10rem;
+    display: none;
+}
+.result .animeList{
+      background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+    background-image: none;
+       border-radius: 20px;
+}
+.error{
+    color: red;
+}
+
+.loading {
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.loading::after {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #9c41f2;
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 850px){
+
+    .navbar .logo{
+        width: 11%;
+    }
+    .navbar .left .search{
+        width :8rem;
+    }
+    .navbar .left .search{
+        font-size: .9rem;
+    }
+    .result{
+        width: 90%;
+    }
+    .result .animeList{
+        gap: 1rem;
+    }
+    .result .animeList .card{
+        width :100%;
+    }
+    .result button{
+        width: 2rem;
+        height: 2rem;
+        top: -10px;
+        right :-10px;
+    }
+}
