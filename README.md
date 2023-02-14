@@ -1,6 +1,6 @@
 # Anime_cards
 
-# [LIVE](https://erin-woodpecker-cuff.cyclic.app/#/)
+# [LIVE](https://shiny-suit-foal.cyclic.app/)
 
 Anime Cards provides you all the anime you want to know about using Jikan API (a free rest api)
 
