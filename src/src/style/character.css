@@ -1,0 +1,63 @@
+.characters{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    
+}
+
+h2{
+    font-family: "Oswald",sans-serif;
+    color: red;
+    background-color: black;
+    padding: 1rem;
+    width: fit-content;
+    border-radius: 10px;
+}
+
+.characters  .char{
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+
+.characters .char:hover{
+    background-color: rgba(0,0,0,.8);
+}
+
+.characters img{
+    border-radius: 10px 0 0 10px;
+    width: 4rem;
+    height: 6rem;
+}
+
+.characters .char .pInfo{
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.characters .char .pInfo span{
+    color: yellow;
+    font-family: "Oswald",sans-serif;
+    font-size: 1.2rem;
+
+
+}
+
+.characters .char .pInfo .role{
+    font-size: .9rem;
+        color: red;
+}
+
+
+
+@media only screen and (max-width : 850px) {
+    .characters{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

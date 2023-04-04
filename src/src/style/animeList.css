@@ -1,0 +1,174 @@
+.home{
+    height: 100vh;
+    background-color: #181818;
+}
+.home .det{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5rem;
+    height: 4rem;
+    align-items: center;
+}
+
+.home .det .name{
+    background-color: #062F4F;
+    color: white;
+    border-radius: 100px;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+}
+.home .det .count{
+    background-color: #B82601;
+    color: white;
+    border-radius: 100px;
+    padding: .5rem 1rem;
+      font-size: 1rem;
+}
+
+
+
+.home .det .sort{
+     color: white;
+     display: flex;
+     flex-direction: column;
+     position: relative;
+}
+
+.home .det .sort .current {
+    background-color: #062F4F;
+    width: 9rem;
+    border-radius: 5px;
+    padding: .5rem 1rem .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Oswald",sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+     cursor: pointer;
+}
+
+.active{
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+.home .det .sort .filterList{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    z-index: 9;
+    background-color: #062F4F;
+    padding: 1rem;
+    width: 82%;
+    border-radius: 5px;
+    gap: 1rem;
+    top: 1.8rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+}
+
+
+
+.home .det .sort ul li{
+    list-style-type: none;
+    cursor: pointer;
+        font-family: "Oswald",sans-serif;
+        font-weight: lighter;
+        
+        letter-spacing: 1px;
+}
+
+.home .det .sort ul hr{
+    width: 90%;
+    background-color: white;
+    border: none;
+    height: 1px;
+    border-radius: 1px;
+}
+
+.home .det .sort ul li:hover{
+    color: #B82601;
+}
+
+.animeList{
+    height: 100%;
+    padding: 2rem 6rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 2rem;
+    align-items:center;
+    background-color: #000000;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1107%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%23SvgjsLinearGradient1108)'%3e%3c/rect%3e%3cpath d='M1381.343%2c389.156C1417.441%2c388.548%2c1439.096%2c352.275%2c1454.815%2c319.774C1468.153%2c292.196%2c1470.731%2c261.097%2c1456.362%2c234.042C1441.007%2c205.133%2c1414.019%2c183.383%2c1381.343%2c181.441C1345.101%2c179.288%2c1306.677%2c192.331%2c1289.111%2c224.105C1271.953%2c255.14%2c1286.159%2c291.365%2c1303.458%2c322.322C1321.344%2c354.33%2c1344.682%2c389.773%2c1381.343%2c389.156' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M1239.786%2c446.614C1268.602%2c446.386%2c1299.079%2c439.04%2c1313.632%2c414.168C1328.297%2c389.103%2c1322.26%2c357.377%2c1306.125%2c333.232C1291.708%2c311.658%2c1265.734%2c303.757%2c1239.786%2c303.665C1213.637%2c303.572%2c1187.321%2c311.13%2c1172.624%2c332.758C1155.947%2c357.3%2c1148.816%2c389.794%2c1163.892%2c415.351C1178.791%2c440.609%2c1210.462%2c446.846%2c1239.786%2c446.614' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1276.23 214.78 a161.35 161.35 0 1 0 322.7 0 a161.35 161.35 0 1 0 -322.7 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M129.43 51.6 a120.38 120.38 0 1 0 240.76 0 a120.38 120.38 0 1 0 -240.76 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M600.99 60.85 a105.52 105.52 0 1 0 211.04 0 a105.52 105.52 0 1 0 -211.04 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M895.1012457397017 177.6012029429985L837.5642922034011 251.24514516366835 911.208234424071 308.78209869996886 968.7451879603715 235.13815647929903z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M493.17 336.47 a101.33 101.33 0 1 0 202.66 0 a101.33 101.33 0 1 0 -202.66 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M906.07 226.65 a166.14 166.14 0 1 0 332.28 0 a166.14 166.14 0 1 0 -332.28 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M267.744%2c195.263C303.596%2c196.379%2c344.955%2c195.846%2c363.524%2c165.158C382.476%2c133.837%2c366.202%2c95.275%2c347.166%2c64.005C329.093%2c34.316%2c302.499%2c7.43%2c267.744%2c7.822C233.496%2c8.209%2c208.258%2c35.968%2c191.368%2c65.764C174.767%2c95.05%2c164.662%2c130.502%2c181.764%2c159.499C198.665%2c188.155%2c234.491%2c194.228%2c267.744%2c195.263' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1107'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='15.28%25' y1='-39.29%25' x2='84.72%25' y2='139.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1108'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(98%2c 0%2c 158%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+background-attachment: fixed;
+background-size: cover;
+}
+
+
+.loading {
+    width: 100vw;
+    height: 88.1vh;
+    background-color: black;
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+}
+
+.loading::after {
+    content: '';
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #f3f3f3;
+    border-top: 6px solid #9c41f2;
+    animation: spin 1s infinite linear;
+    border-radius: 100%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    text-align: center;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .animeList{
+        grid-template-columns: repeat(3,1fr);
+        gap: 3rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .home .det{
+        padding: 0 1rem;
+        margin-top: -1rem;
+    }
+
+.home .det .count{
+    font-size: .6rem;
+}
+.home .det .name{
+    font-size: .6rem;
+}
+.home .det .sort{
+    font-size: .6rem;
+}
+    .animeList{
+        grid-template-columns: repeat(2,1fr);
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+}
