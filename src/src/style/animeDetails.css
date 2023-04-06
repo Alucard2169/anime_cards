@@ -10,6 +10,14 @@ position: relative;
 
 }
 
+.error{
+    color: red;
+    background-color: black;
+    margin-inline: auto;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
 
 
 .back{
