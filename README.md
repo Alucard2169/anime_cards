@@ -1,21 +1,38 @@
+
 # Anime_cards
 
-# [LIVE](https://different-pear-bullfrog.cyclic.app/)
+# [LIVE SITE](https://different-pear-bullfrog.cyclic.app/)
 
-Anime Cards provides you all the anime you want to know about using Jikan API (a free rest api)
+Anime Card is a prototype web application that let's you search and browse your favorite anime, it gives you a brief detail about every anime.
 
-> Build using :- 
+> ### Build using :- 
 
- > ReactJS
- > 
- > NodeJS
- > 
- > ExpressJS
- > 
- > Framer Motion
- > 
- > dotenv
+> #### Frontend
+ *  ReactJS  [docs](https://react.dev/)
+ * Framer-motion [docs](https://www.framer.com/motion/)
  
+ > #### Backend
+ * NodeJS [docs](https://nodejs.org/en)
+ * ExpressJS [docs](https://expressjs.com/)
+ * Axios [docs](https://axios-http.com/)
+ * APIcache [docs](https://apicache.net/)
+ 
+ ---
+#### The packages can be downloaded using [NPM](https://www.npmjs.com/)
+
+---
+### The project uses [Jikan](https://docs.api.jikan.moe/) API 
+> [Jikan](https://jikan.moe) is an **Unofficial** MyAnimeList API. It scrapes the website to satisfy the need for a complete API - which MyAnimeList lacks.
+
+A basic API request to Jikan API looks like this
+
+
+     const id = req.params.id;
+    // make request to api
+    const response = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
+    const data = response.data;
+    res.status(200).json(data.data);
+
  
  
  ## Homepage preview
