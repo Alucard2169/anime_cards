@@ -33,8 +33,10 @@ A basic API request to Jikan API looks like this
     const data = response.data;
     res.status(200).json(data.data);
 
- 
- 
+ ---
+ ## Project is deployed on [Cyclic](https://www.cyclic.sh/)
+ > Cyclic is a serverless Hosting service that provides different pricing subscription including Free hosting upto 3 projects.
+ ---
  ## Homepage preview
  
  ![Anime Cards Homepage](https://github.com/Alucard2169/Anime_cards/blob/main/Screenshot%202022-09-26%20at%2009-43-31%20Anime%20Cards.png?raw=true)
