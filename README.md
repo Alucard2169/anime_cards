@@ -40,3 +40,13 @@ A basic API request to Jikan API looks like this
  ## Homepage preview
  
  ![Anime Cards Homepage](https://github.com/Alucard2169/Anime_cards/blob/main/Screenshot%202022-09-26%20at%2009-43-31%20Anime%20Cards.png?raw=true)
+ 
+ 
+ 
+# Contributing
+
+If you would like to contribute to Anime_cards, feel free to submit a pull request with your changes. Please be sure to include a description of your changes and an explanation of why they are needed.
+
+# Credits
+
+Anime_cards was created by Alucard2169.
