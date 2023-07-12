@@ -15,7 +15,6 @@ interface ContentProps {
 
 
 const Content: React.FC<ContentProps> = ({ animeResult, mangaResult, characterResult }) => {
-    
   return (
     <div className="flex flex-col gap-12 p-6">
       <section className="flex flex-col gap-6">

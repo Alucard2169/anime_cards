@@ -3,6 +3,7 @@ export interface MangaProps {
   url: string;
   images: ImageProps;
   approved: boolean;
+  title: string;
   title_english: string;
   title_japanese: string;
   type: string;
