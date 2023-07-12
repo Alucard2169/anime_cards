@@ -6,12 +6,13 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
-  
   },
   "keywords": [],
   "author": "Alucard2169",
   "license": "ISC",
   "dependencies": {
+    "@jridgewell/sourcemap-codec": "^1.4.15",
+    "@rollup/plugin-terser": "^0.4.3",
     "apicache": "^1.6.3",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
