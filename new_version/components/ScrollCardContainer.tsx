@@ -28,15 +28,17 @@ const MediaCardsContainer: React.FC<MediaCardsContainerProps> = ({
     if (scrollRef.current) {
       scrollRef.current.scrollLeft += 400;
     }
-    };
-
+  };
 
   return (
     <div className="overflow-hidden flex items-center">
-      <AiFillCaretLeft onClick={handleLeftScroll} className="ml-8 text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"/>
+      <AiFillCaretLeft
+        onClick={handleLeftScroll}
+        className="ml-8 text-white text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"
+      />
       <div
         ref={scrollRef}
-        className="flex gap-12 h-full  overflow-x-scroll w-10/12 m-auto scroll-smooth"
+        className="flex gap-12 h-full overflow-x-scroll w-10/12 m-auto scroll-smooth scrollbar-thin scrollbar-thumb-PRIMARY scrollbar-track-MAIN"
       >
         {type === "anime" &&
           data.map((media) => (
@@ -51,7 +53,10 @@ const MediaCardsContainer: React.FC<MediaCardsContainerProps> = ({
             <CharacterCard key={media.mal_id} data={media as CharacterProps} />
           ))}
       </div>
-      <AiFillCaretRight onClick={handleRightScroll} className="mr-8 text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"/>
+      <AiFillCaretRight
+        onClick={handleRightScroll}
+        className="mr-8 text-white  text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"
+      />
     </div>
   );
 };
