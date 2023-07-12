@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
       <div className="flex flex-col justify-center gap-6">
         <p>Search and view details about you favorite anime or manga</p>
         <button className="m-auto bg-PRIMARY py-2 px-4 rounded-full text-xl text-MAIN font-semibold hover:scale-110 hover:bg-PRIMARY_TWO transition-all duration-100 ease-in ">
-          START YOUR JOURNEY
+          <Link href="/content">START YOUR JOURNEY</Link>
         </button>
       </div>
     </main>
