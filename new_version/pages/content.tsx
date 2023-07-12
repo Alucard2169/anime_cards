@@ -17,17 +17,25 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({ animeResult, mangaResult, characterResult }) => {
     
   return (
-    <div>
-      <section>
-        <h1>Anime</h1>
+    <div className="flex flex-col gap-12 p-6">
+      <section className="flex flex-col gap-6">
+        <h1 className="text-2xl bg-PRIMARY p-2 rounded-md text-MAIN w-fit font-bold">
+          Currently Popular In Anime
+        </h1>
         <MediaCardsContainer data={animeResult} type="anime" />
       </section>
-      <section>
-        <h1>Manga</h1>
+      <hr />
+      <section className="flex flex-col gap-6">
+        <h1 className="text-2xl bg-PRIMARY_TWO p-2 rounded-md text-MAIN w-fit font-bold">
+          Currently Popular In Manga
+        </h1>
         <MediaCardsContainer data={mangaResult} type="manga" />
       </section>
-      <section>
-        <h1>Characters</h1>
+      <hr />
+      <section className="flex flex-col gap-6">
+        <h1 className="text-2xl bg-PRIMARY_THREE   p-2 rounded-md text-MAIN w-fit font-bold">
+          Currently Popular In Characters
+        </h1>
         <MediaCardsContainer data={characterResult} type="character" />
       </section>
     </div>

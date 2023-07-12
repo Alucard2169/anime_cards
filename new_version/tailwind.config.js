@@ -11,6 +11,7 @@ module.exports = {
         MAIN: "#000000",
         PRIMARY: "#03a9f4",
         PRIMARY_TWO: "#188fcd",
+        PRIMARY_THREE:"#1f76a8",
         CARD: "#121b23",
       },
     },
