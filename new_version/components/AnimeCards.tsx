@@ -9,11 +9,11 @@ interface AnimeCardProps {
 }
 
 const AnimeCard: FC<AnimeCardProps> = ({ data }) => {
-    const { images,title, title_english, title_japanese, type, episodes, rank, rating } = data;
+    const {mal_id, images,title, title_english, title_japanese, type, episodes, rank, rating } = data;
     const { webp } = images;
     const {image_url } = webp;
   return (
-    <Link href="#">
+    <Link href={`/anime/${mal_id}`}>
       <div
         className="flex h-full flex-col justify-between gap-2  p-2 rounded-md hover:bg-PRIMARY_TWO transition-all duratoin-100 ease-in"
         title={title || title_english || title_japanese}
