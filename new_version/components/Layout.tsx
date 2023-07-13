@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { FC, ReactNode } from "react";
 
 type LayoutProps = {
@@ -5,7 +6,17 @@ type LayoutProps = {
 }
 
 const Layout:FC<LayoutProps> = ({ children }) => {
-    return <>{children}</>;
+    return (
+      <>
+        <Head>
+          
+            <title>Otaku Cards</title>
+            <link rel="icon" href="/favicon.png" />
+    
+        </Head>
+        {children}
+      </>
+    );
 }
  
 export default Layout;
