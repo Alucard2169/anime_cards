@@ -1,8 +1,9 @@
-import { FC } from 'react';
-import { AnimeDetailsProps } from '@/types/animeIntefaces';
+import { FC, useState } from 'react';
+import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import Image from 'next/image';
 import Link from 'next/link';
-
+import Iframe from '@/components/Iframe';
+import {AiFillPlayCircle} from 'react-icons/ai'
 
 interface AnimeProps {
     animeResult: AnimeDetailsProps;
@@ -10,27 +11,35 @@ interface AnimeProps {
 
 
 const AnimeDeatails: FC<AnimeProps> = ({ animeResult }) => {
-    console.log(animeResult)
+  console.log(animeResult)
+  const [state,setState] = useState<boolean>(false)
+
     const {
-        images,
-        title,
-        title_english,
-        title_japanese,
-        type,
-        titles,
-        airing,
-        episodes,
-        duration,
-        score,
-        scored_by,
-        studios,
-        genres,
+      images,
+      title,
+      title_english,
+      title_japanese,
+      type,
+      titles,
+      airing,
+      episodes,
+      duration,
+      score,
+      scored_by,
+      studios,
+      genres,
+      synopsis,
+      background,
+      trailer,
     } = animeResult;
    
+  const {youtube_id,embed_url} = trailer;
     
     return (
-      <div className="pt-20 p-8">
-        <div className="w-full bg-PRIMARY_TWO p-3 sm:w-1/5">
+      <div
+        className={`pt-20 p-8 w-full  gap-6 ${'animeDetailPage'}`}
+      >
+        <div className="w-full bg-PRIMARY_TWO p-3">
           <section className="p-2 bg-PRIMARY w-fit flex flex-col items-center rounded-md gap-4">
             <div className="border border-MAIN border-8 rounded-md overflow-hidden">
               <Image
@@ -105,7 +114,9 @@ const AnimeDeatails: FC<AnimeProps> = ({ animeResult }) => {
                       key={studio.mal_id}
                       className="bg-MAIN text-PRIMARY  w-fit p-1 font-semibold"
                     >
-                          <a href={studio.url} target="_blank">{studio.name}</a>
+                      <a href={studio.url} target="_blank">
+                        {studio.name}
+                      </a>
                     </span>
                   ))}
                 </ul>
@@ -127,6 +138,38 @@ const AnimeDeatails: FC<AnimeProps> = ({ animeResult }) => {
                   ))}
                 </ul>
               </div>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col gap-8 w-full">
+          <div>
+            {embed_url && (
+              <button
+                className="text-xl text-white font-bold flex items-center"
+                onClick={() => setState(true)}
+              >
+                <AiFillPlayCircle className="mr-2 w-12 h-12" />
+                Play Trailer
+              </button>
+            )}
+            {state ? (
+              <Iframe
+                state={state}
+                setState={setState}
+                data={{ embed_url, youtube_id, title, title_japanese }}
+              />
+            ) : null}
+          </div>
+          <div className="flex gap-4 w-full ">
+            <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
+              <h2 className="text-PRIMARY font-bold text-2xl">Synopsis</h2>
+              <p className="text-white mt-4 leading-6">{synopsis}</p>
+            </section>
+            {background && (
+              <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
+                <h2 className="text-PRIMARY font-bold text-2xl">Background</h2>
+                <p className="text-white mt-4 leading-6">{background}</p>
+              </section>
             )}
           </div>
         </div>

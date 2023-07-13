@@ -6,3 +6,9 @@
 html,body{
   background-color: #242A38;
 }
+
+
+.animeDetailPage {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}

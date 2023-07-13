@@ -27,7 +27,7 @@ export interface AnimeDetailsProps {
   mal_id: number;
   url: string;
   images: ImageProps;
-  trailer: TrailerProps[];
+  trailer: TrailerProps;
   titles: TitlesProps[];
   title: string;
   airing: boolean;
