@@ -8,13 +8,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        MAIN: "#000000",
-        PRIMARY: "#03a9f4",
-        PRIMARY_TWO: "#188fcd",
-        PRIMARY_THREE:"#1f76a8",
-        CARD: "#121b23",
+        MAIN: "#242A38",
+        PRIMARY: "#F66C62",
+        PRIMARY_TWO: "#4E596F",
+        NUTRAL: "#FFFFFF",
       },
     },
   },
-  plugins: [require("tailwind-scrollbar"),],
+  plugins: [require("tailwind-scrollbar")],
 };

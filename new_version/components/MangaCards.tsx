@@ -21,7 +21,7 @@ const MangaCard: FC<MangaCardProps> = ({ data }) => {
   const { image_url } = webp;
   return (
     <div
-      className="flex flex-col justify-between gap-2  p-2 bg-CARD rounded-md"
+      className="flex h-full flex-col justify-between gap-2  p-2 rounded-md hover:bg-PRIMARY_TWO transition-all duratoin-100 ease-in"
       title={title || title_english || title_japanese}
     >
       <div className="w-44 h-4/5 rounded-md overflow-hidden">
@@ -33,9 +33,9 @@ const MangaCard: FC<MangaCardProps> = ({ data }) => {
           className="w-full h-full"
         />
       </div>
-      <div className="mb-auto flex flex-col justify-between h-1/5 gap-1">
+      <div className="mb-0 flex flex-col justify-between h-1/5 gap-1">
         <h3 className="text-center text-sm text-white font-semibold">
-          {(title && title.slice(0,30)) ||
+          {(title && title.slice(0, 30)) ||
             (title_english && title_english.slice(0, 30)) ||
             title_japanese}
         </h3>

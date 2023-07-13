@@ -30,6 +30,7 @@ const MediaCardsContainer: React.FC<MediaCardsContainerProps> = ({
     }
   };
 
+
   return (
     <div className="overflow-hidden flex items-center">
       <AiFillCaretLeft

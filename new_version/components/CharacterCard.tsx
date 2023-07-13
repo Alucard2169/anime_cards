@@ -14,7 +14,7 @@ const CharacterCard: FC<CharacterCardProps> = ({ data }) => {
   const { image_url } = webp;
   return (
     <div
-      className="flex flex-col justify-between gap-2  p-2 bg-CARD rounded-md"
+      className="flex h-full flex-col justify-between gap-2  p-2 rounded-md hover:bg-PRIMARY_TWO transition-all duratoin-100 ease-in"
       title={name || name_kanji}
     >
       <div className="w-44 h-4/5 rounded-md overflow-hidden">
@@ -31,7 +31,10 @@ const CharacterCard: FC<CharacterCardProps> = ({ data }) => {
           {name || name_kanji}
         </h3>
         <aside className="flex justify-center px-2">
-          <span className="flex gap-2 items-center text-md bg-PRIMARY p-1 rounded-md text-MAIN font-bold"><AiFillHeart className="bg-CARD text-PRIMARY p-1 text-2xl rounded-md"/>{favorites}</span>
+          <span className="flex gap-2 items-center text-md bg-PRIMARY p-1 rounded-md text-MAIN font-bold">
+            <AiFillHeart className=" text-MAIN p-1 text-2xl rounded-md" />
+            {favorites}
+          </span>
         </aside>
       </div>
     </div>
