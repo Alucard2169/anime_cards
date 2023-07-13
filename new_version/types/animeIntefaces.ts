@@ -2,7 +2,8 @@ export interface AnimeProps {
   mal_id: number;
   url: string;
   images: ImageProps;
-    approved: boolean;
+  approved: boolean;
+  title: string;
   title_english: string;
   title_japanese: string;
   type: string;
