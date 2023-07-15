@@ -125,7 +125,7 @@ const AnimeDeatails: FC<AnimeProps> = ({ animeResult, characterResult }) => {
           {genres && (
             <div className="bg-PRIMARY p-1 rounded-md flex flex-col gap-2">
               <h4 className="font-bold text-MAIN">Genres</h4>
-              <ul className="grid grid-cols-3 gap-2">
+              <ul className="grid grid-cols-2 gap-2 auto-rows-auto">
                 {genres.map((genre) => (
                   <span
                     key={genre.mal_id}
@@ -173,8 +173,10 @@ const AnimeDeatails: FC<AnimeProps> = ({ animeResult, characterResult }) => {
           )}
         </div>
         <div className="flex flex-col gap-4">
-          <h2 className='text-2xl text-PRIMARY font-bold'>Notable Characters</h2>
-          <div className='grid grid-cols-2 sm:grid-cols-5 gap-5'>
+          <h2 className="text-2xl text-PRIMARY font-bold">
+            Notable Characters
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-5">
             {characterResult.map((character) => (
               <Characters data={character} />
             ))}
