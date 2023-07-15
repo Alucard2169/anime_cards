@@ -18,3 +18,11 @@ export interface WebProps {
   small_image_url: string;
 }
 
+
+export interface SeriesCharacterProps {
+  characters: CharacterProps;
+  role: string;
+  favorite: number;
+}
+
+

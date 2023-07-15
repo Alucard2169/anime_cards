@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 
 const Navbar = () => {
     return (
-      <nav className="fixed  w-full py-2 px-4 bg-PRIMARY">
+      <nav className="z-50 fixed  w-full py-2 px-4 bg-PRIMARY">
         <ul className="flex justify-between">
           <li>
             <Link href="/content">
