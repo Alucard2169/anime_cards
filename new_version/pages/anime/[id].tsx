@@ -6,12 +6,17 @@ import Iframe from '@/components/Iframe';
 import { AiFillPlayCircle, AiFillCaretRight } from "react-icons/ai";
 import{BiLinkExternal} from 'react-icons/bi'
 import Characters from '@/components/Characters';
-import { CharacterProps, SeriesCharacterProps } from '@/types/characterInterfaces';
+import {  SeriesCharacterProps } from '@/types/characterInterfaces';
 
+interface StreamingProps {
+  name: string;
+  url: string;
+}
 
 interface AnimeProps {
   animeResult: AnimeDetailsProps;
   characterResult: SeriesCharacterProps[];
+  streamingResult: StreamingProps[];
 }
 
 
