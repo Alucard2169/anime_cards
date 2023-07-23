@@ -240,7 +240,7 @@ export async function getServerSideProps(context:any) {
 
       // get character data
       const characterResponse = await fetch(
-        `https://api.jikan.moe/v4/anime/${id}/characters?limit=6`
+        `https://api.jikan.moe/v4/anime/${id}/characters`
       );
       const characterData = await characterResponse.json();
       const characterResult = characterData.data.slice(0,6);

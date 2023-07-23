@@ -16,13 +16,15 @@ interface MangaData {
 }
 
 const MangaDetails: FC<MangaData> = ({
-    mangaResult,
+  mangaResult,
+  characterResult,
 }) => {
+console.log(characterResult)
 const addCommasToNumber = (number: number): string => {
   return number.toLocaleString();
 };
   const [state, setState] = useState<boolean>(false);
-
+  const mediaType = 'manga';
   const {
      mal_id,
   url,
@@ -34,7 +36,7 @@ const addCommasToNumber = (number: number): string => {
  
   type,
       titles,
-
+authors,
   status,
   chapters,
   volumes,
@@ -63,6 +65,21 @@ const addCommasToNumber = (number: number): string => {
             {title || title_english}
           </h1>
           <h2 className="text-MAIN font-semibold text-lg">{title_japanese}</h2>
+        </section>
+        <section className="bg-MAIN rounded-md p-2 mt-2">
+          <h3 className="text-white font-semibold text-xl">Authors</h3>
+          <ul className="flex flex-col gap-2 mt-2">
+            {authors.map((author) => (
+              <li
+                key={author.mal_id}
+                className="bg-PRIMARY w-fit rounded-md  p-1 font-semibold"
+              >
+                <a href={author.url} target="_blank">
+                  {author.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <div className="mt-4 flex flex-col gap-3">
@@ -132,18 +149,38 @@ const addCommasToNumber = (number: number): string => {
           )}
         </div>
       </div>
-
-      <div className="flex gap-4 w-full h-fit">
-        <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
-          <h2 className="text-PRIMARY font-bold text-2xl">Synopsis</h2>
-          <p className="text-white mt-4 leading-6">{synopsis}</p>
-        </section>
-        {background && (
+      <div className="flex flex-col gap-8 w-full">
+        <div className="flex gap-4 w-full h-fit">
           <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
-            <h2 className="text-PRIMARY font-bold text-2xl">Background</h2>
-            <p className="text-white mt-4 leading-6">{background}</p>
+            <h2 className="text-PRIMARY font-bold text-2xl">Synopsis</h2>
+            <p className="text-white mt-4 leading-6">{synopsis}</p>
           </section>
-        )}
+          {background && (
+            <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
+              <h2 className="text-PRIMARY font-bold text-2xl">Background</h2>
+              <p className="text-white mt-4 leading-6">{background}</p>
+            </section>
+          )}
+        </div>
+        <section className="flex flex-col gap-4">
+          <h2 className="text-2xl text-PRIMARY font-bold">
+            Notable Characters
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-6 gap-5">
+            {characterResult.map((character, i) => (
+              <Characters data={character} key={i} />
+            ))}
+          </div>
+          <button className=" text-lg text-PRIMARY font-bold ">
+            <Link
+              className="flex items-center"
+              href={`/manga/characters/${mal_id}`}
+            >
+              {" "}
+              View All characters <AiFillCaretRight className="text-2xl" />
+            </Link>
+          </button>
+        </section>
       </div>
     </div>
   );
@@ -155,38 +192,32 @@ export async function getServerSideProps(context: any) {
 
   try {
     // Fetch manga data
-    const mangaResponse = await fetch(
-      `https://api.jikan.moe/v4/manga/${id}`
-    );
+    const mangaResponse = await fetch(`https://api.jikan.moe/v4/manga/${id}`);
     if (!mangaResponse.ok) {
       throw new Error("Failed to fetch manga data.");
     }
 
-      const mangaData = await mangaResponse.json();
-      const mangaResult = mangaData.data;
-   
+    const mangaData = await mangaResponse.json();
+    const mangaResult = mangaData.data;
 
-    // // Fetch character data
-    // const characterResponse = await fetch(
-    //   `https://api.jikan.moe/v4/manga/${id}/characters`
-    // );
-    // if (!characterResponse.ok) {
-    //   throw new Error("Failed to fetch character data.");
-    // }
-    // const characterData = await characterResponse.json();
-    // const characterResult = characterData.data.characters.slice(0, 6);
-
+    // Fetch character data
+    // get character data
+    const characterResponse = await fetch(
+      `https://api.jikan.moe/v4/manga/${id}/characters`
+    );
+    const characterData = await characterResponse.json();
+    const characterResult = characterData.data.slice(0, 6);
     return {
       props: {
         mangaResult,
-        // characterResult,
+        characterResult,
       },
     };
   } catch (err) {
     console.error(err);
     return {
       props: {
-        mangaResult: null,
+        mangaResult: [],
         characterResult: [],
       },
     };

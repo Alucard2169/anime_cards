@@ -58,17 +58,18 @@ export async function getServerSideProps(context: any) {
   const { id } = context.query;
 
   try {
-   
-    // get character data
+    
+    
+    // Fetch character data
+    
     const characterResponse = await fetch(
-      `https://api.jikan.moe/v4/anime/${id}/characters?limit=6`
+      `https://api.jikan.moe/v4/manga/${id}/characters`
     );
     const characterData = await characterResponse.json();
     const characterResult = characterData.data;
-
     return {
       props: {
-    
+      
         characterResult,
       },
     };

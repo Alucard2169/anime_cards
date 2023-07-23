@@ -6,9 +6,10 @@ export interface MangaProps {
   title: string;
   title_english: string;
   title_japanese: string;
-     title_synonyms:string[],
+  title_synonyms: string[];
   type: string;
   titles: string[];
+  authors: AuthorProps[];
   status: string;
   chapters: number;
   volumes: string;
@@ -20,6 +21,13 @@ export interface MangaProps {
   genres: geners[];
 }
 
+
+interface AuthorProps {
+  mal_id: number;
+  name: string;
+  type: string;
+  url: string;
+}
 
  
    
