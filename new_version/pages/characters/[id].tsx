@@ -73,31 +73,35 @@ const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
             <h2 className="text-PRIMARY font-bold text-2xl">About</h2>
             <p className="text-white mt-4 leading-6">{about}</p>
           </section>
-              </div>
-              <h2 className="text-2xl text-PRIMARY font-semibold">Animes</h2>
+        </div>
+        <h2 className="text-2xl text-PRIMARY font-semibold">Animes</h2>
         <div className="grid grid-cols-4 gap-3">
           {truncatedAnime.map((an) => (
-            <div className="bg-PRIMARY_TWO w-full h-fit flex flex-col gap-1 items-center pr-5 rounded-md overflow-hidden">
-              <div className="w-full h-40">
-                <Image
-                  src={an.anime.images.webp.large_image_url}
-                  alt={an.anime.title}
-                  width={205}
-                  height={200}
-                  layout="responsive"
-                  objectFit="cover"
-                />
+            <Link href={`/anime/${an.anime.mal_id}`}>
+              <div
+                className="bg-PRIMARY_TWO w-full h-fit flex flex-col gap-1 items-center pr-5 rounded-md overflow-hidden"
+                title={an.anime.title}
+              >
+                <div className="w-full h-40">
+                  <Image
+                    src={an.anime.images.webp.large_image_url}
+                    alt={an.anime.title}
+                    width={205}
+                    height={200}
+                    layout="responsive"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="bg-MAIN w-full p-2 text-center">
+                  <h4 className="font-semibold text-PRIMARY truncate">
+                    {an.anime.title}
+                  </h4>
+                  <span className="text-white">{an.role}</span>
+                </div>
               </div>
-              <div className="bg-MAIN w-full p-2 text-center">
-                <h4 className="font-semibold text-PRIMARY truncate">
-                  {an.anime.title}
-                </h4>
-                <span className="text-white">{an.role}</span>
-              </div>
-            </div>
+            </Link>
           ))}
-              </div>
-              
+        </div>
       </div>
     </div>
   );

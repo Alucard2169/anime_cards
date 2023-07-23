@@ -3,9 +3,11 @@ import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import Image from 'next/image';
 import Link from 'next/link';
 import Iframe from '@/components/Iframe';
-import {AiFillPlayCircle} from 'react-icons/ai'
+import { AiFillPlayCircle, AiFillCaretRight } from "react-icons/ai";
+import{BiLinkExternal} from 'react-icons/bi'
 import Characters from '@/components/Characters';
 import { CharacterProps, SeriesCharacterProps } from '@/types/characterInterfaces';
+
 
 interface AnimeProps {
   animeResult: AnimeDetailsProps;
@@ -13,11 +15,16 @@ interface AnimeProps {
 }
 
 
-const AnimeDeatails: FC<AnimeProps> = ({ animeResult, characterResult }) => {
+const AnimeDeatails: FC<AnimeProps> = ({
+  animeResult,
+  characterResult,
+  streamingResult,
+}) => {
   console.log(characterResult);
   const [state, setState] = useState<boolean>(false);
 
   const {
+    mal_id,
     images,
     title,
     title_english,
@@ -172,16 +179,37 @@ const AnimeDeatails: FC<AnimeProps> = ({ animeResult, characterResult }) => {
             </section>
           )}
         </div>
-        <div className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl text-PRIMARY font-bold">
             Notable Characters
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-5">
-            {characterResult.map((character) => (
-              <Characters data={character} />
+          <div className="grid grid-cols-2 sm:grid-cols-6 gap-5">
+            {characterResult.map((character, i) => (
+              <Characters data={character} key={i} />
             ))}
           </div>
-        </div>
+          <button className=" text-lg text-PRIMARY font-bold ">
+            <Link
+              className="flex items-center"
+              href={`/anime/characters/${mal_id}`}
+            >
+              {" "}
+              View All characters <AiFillCaretRight className="text-2xl" />
+            </Link>
+          </button>
+        </section>
+        <hr />
+        <section className='flex flex-col gap-4'>
+          <h2 className="text-2xl text-PRIMARY font-bold">Streaming</h2>
+          <div className='flex gap-4 align-center'>
+            {streamingResult &&
+              streamingResult.map((streaming) => (
+                <span className='cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center'>
+                  <a href={`${streaming.url}`} target='_blank'>{streaming.name}</a> <BiLinkExternal/>
+                </span>
+              ))}
+          </div>
+        </section>
       </div>
     </div>
   );
@@ -201,23 +229,31 @@ export async function getServerSideProps(context:any) {
 
 
       // get character data
-      const characterResponse = await fetch(`https://api.jikan.moe/v4/anime/${id}/characters`)
+      const characterResponse = await fetch(
+        `https://api.jikan.moe/v4/anime/${id}/characters?limit=6`
+      );
       const characterData = await characterResponse.json();
-      const characterResult = characterData.data;
+      const characterResult = characterData.data.slice(0,6);
 
+
+      // get Streaming data
+      const streamingResponse = await fetch(
+        `https://api.jikan.moe/v4/anime/${id}/streaming`
+      );
+      const streamingData = await streamingResponse.json()
+      const streamingResult = streamingData.data;
 
           return {
             props: {
               animeResult,
               characterResult,
+              streamingResult,
             },
           };
     }
     catch (err: any) {
         console.log(err)
     }
-    
-  
 }
 
 

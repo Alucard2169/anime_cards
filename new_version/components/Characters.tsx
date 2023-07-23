@@ -13,7 +13,7 @@ const Characters: React.FC<CharacterProps> = ({ data }) => {
     return (
       <Link key={mal_id} href={`/characters/${mal_id}`}>
         <div
-          
+          key={mal_id}
           className="z-1 relative flex flex-col gap-2  w-32 max-w-fit h-52 rounded-md overflow-hidden"
           onMouseOver={() => setVisibility(1)}
           onMouseLeave={() => setVisibility(0)}
@@ -28,7 +28,7 @@ const Characters: React.FC<CharacterProps> = ({ data }) => {
             />
           </div>
           <div
-            className={`absolute bottom-0 left-0 bg-MAIN w-full p-1 opacity-${visibility} transition-all duration-200 ease text-center`}
+            className={`absolute bottom-0 left-0 bg-MAIN w-full p-1 ${visibility === 0 ? 'opacity-0' : 'opacity-1'} transition-all duration-200 ease text-center`}
           >
             <h2 className="font-bold text-PRIMARY text-md mb-2">{name}</h2>
             <span className="font-semibold text-MAIN bg-PRIMARY p-1/2">
