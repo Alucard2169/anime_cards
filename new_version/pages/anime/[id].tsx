@@ -25,7 +25,9 @@ const AnimeDeatails: FC<AnimeProps> = ({
   characterResult,
   streamingResult,
 }) => {
-  console.log(characterResult);
+  const addCommasToNumber = (number: number): string => {
+    return number.toLocaleString();
+  };
   const [state, setState] = useState<boolean>(false);
 
   const {
@@ -113,7 +115,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
             <li className="text-MAIN bg-PRIMARY p-1 font-bold rounded-md">
               Score By{" "}
               <span className="ml-2 bg-MAIN p-1 text-PRIMARY">
-                {scored_by || "??"} People
+                {addCommasToNumber(scored_by) || "??"} People
               </span>
             </li>
           </ul>
@@ -204,13 +206,16 @@ const AnimeDeatails: FC<AnimeProps> = ({
           </button>
         </section>
         <hr />
-        <section className='flex flex-col gap-4'>
+        <section className="flex flex-col gap-4">
           <h2 className="text-2xl text-PRIMARY font-bold">Streaming</h2>
-          <div className='flex gap-4 align-center'>
+          <div className="flex gap-4 align-center">
             {streamingResult &&
               streamingResult.map((streaming) => (
-                <span className='cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center'>
-                  <a href={`${streaming.url}`} target='_blank'>{streaming.name}</a> <BiLinkExternal/>
+                <span className="cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center">
+                  <a href={`${streaming.url}`} target="_blank">
+                    {streaming.name}
+                  </a>{" "}
+                  <BiLinkExternal />
                 </span>
               ))}
           </div>

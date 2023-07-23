@@ -10,7 +10,7 @@ export interface CharacterProps {
   nicknames: string[];
   anime: CharacterAnimeProps[];
   manga: CharacterMangaProps[];
-  favorites: string;
+  favorites: number;
   about: string;
 }
 

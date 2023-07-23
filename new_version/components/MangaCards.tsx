@@ -9,6 +9,7 @@ interface MangaCardProps {
 }
 
 const MangaCard: FC<MangaCardProps> = ({ data }) => {
+  
   const {
     mal_id,
       images,

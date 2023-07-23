@@ -9,6 +9,9 @@ interface CharacterCardProps {
 }   
 
 const CharacterCard: FC<CharacterCardProps> = ({ data }) => {
+  const addCommasToNumber = (number: number): string => {
+    return number.toLocaleString();
+  };
   const { mal_id,images, name, name_kanji, favorites } =
     data;
   const { webp } = images;
@@ -35,7 +38,7 @@ const CharacterCard: FC<CharacterCardProps> = ({ data }) => {
           <aside className="flex justify-center px-2">
             <span className="flex gap-2 items-center text-md bg-PRIMARY p-1 rounded-md text-MAIN font-bold">
               <AiFillHeart className=" text-MAIN p-1 text-2xl rounded-md" />
-              {favorites}
+              {addCommasToNumber(favorites)}
             </span>
           </aside>
         </div>
