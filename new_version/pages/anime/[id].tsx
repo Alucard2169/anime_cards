@@ -7,6 +7,7 @@ import { AiFillPlayCircle, AiFillCaretRight } from "react-icons/ai";
 import{BiLinkExternal} from 'react-icons/bi'
 import Characters from '@/components/Characters';
 import {  SeriesCharacterProps } from '@/types/characterInterfaces';
+import { MangaRelationProps } from '@/types/mangaInterfaces';
 
 interface StreamingProps {
   name: string;
@@ -17,6 +18,7 @@ interface AnimeProps {
   animeResult: AnimeDetailsProps;
   characterResult: SeriesCharacterProps[];
   streamingResult: StreamingProps[];
+  relationResult : MangaRelationProps[];
 }
 
 
@@ -24,6 +26,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
   animeResult,
   characterResult,
   streamingResult,
+  relationResult,
 }) => {
   const addCommasToNumber = (number: number): string => {
     return number.toLocaleString();
@@ -206,11 +209,11 @@ const AnimeDeatails: FC<AnimeProps> = ({
           </button>
         </section>
         <hr />
-        <section className="flex flex-col gap-4">
-          <h2 className="text-2xl text-PRIMARY font-bold">Streaming</h2>
-          <div className="flex gap-4 align-center">
-            {streamingResult &&
-              streamingResult.map((streaming) => (
+        {streamingResult.length > 0 && (
+          <section className="flex flex-col gap-4">
+            <h2 className="text-2xl text-PRIMARY font-bold">Streaming</h2>
+            <div className="flex gap-4 align-center">
+              {streamingResult.map((streaming) => (
                 <span className="cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center">
                   <a href={`${streaming.url}`} target="_blank">
                     {streaming.name}
@@ -218,8 +221,40 @@ const AnimeDeatails: FC<AnimeProps> = ({
                   <BiLinkExternal />
                 </span>
               ))}
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
+        <hr />
+        {relationResult.length > 0 && (
+          <section>
+            <h2 className="text-2xl text-PRIMARY font-bold mb-4">Relations</h2>
+            <ul className="flex flex-col gap-4">
+              {relationResult.map((relation, i) => (
+                <li key={i} className="flex gap-2">
+                  <h4 className="bg-PRIMARY text-MAIN font-semibold w-1/6 text-center p-1 rounded-md text-xl h-fit">
+                    {relation.relation}
+                  </h4>
+                  {/* Use the entry as an argument in the inner map function */}
+                  <div>
+                    {relation.entry.map((entry, j) => (
+                      <h5 className=" w-fit p-1 text-PRIMARY" key={j}>
+                        <Link
+                          href={
+                            entry.type === "manga"
+                              ? `/manga/${entry.mal_id}`
+                              : `/anime/${entry.mal_id}`
+                          }
+                        >
+                          {entry.name}
+                        </Link>
+                      </h5>
+                    ))}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
   );
@@ -228,42 +263,58 @@ const AnimeDeatails: FC<AnimeProps> = ({
 export default AnimeDeatails;
 
 
-export async function getServerSideProps(context:any) {
-    const {id} = context.query;
-    
-    try {
-        const animeResponse = await fetch(`https://api.jikan.moe/v4/anime/${id}`)
-        const animeData = await animeResponse.json()
-      const animeResult = animeData.data;
-      
+export async function getServerSideProps(context: any) {
+  const { id } = context.query;
 
+  try {
+    const animeResponse = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
+    const animeData = await animeResponse.json();
+    const animeResult = animeData.data;
 
-      // get character data
-      const characterResponse = await fetch(
-        `https://api.jikan.moe/v4/anime/${id}/characters`
-      );
-      const characterData = await characterResponse.json();
-      const characterResult = characterData.data.slice(0,6);
+    // get character data
+    const characterResponse = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/characters`
+    );
+    const characterData = await characterResponse.json();
+    const characterResult = characterData.data.slice(0, 6);
 
+    // Introduce a delay of 333 milliseconds before fetching the last two requests
+    await new Promise((resolve) => setTimeout(resolve, 333));
 
-      // get Streaming data
-      const streamingResponse = await fetch(
-        `https://api.jikan.moe/v4/anime/${id}/streaming`
-      );
-      const streamingData = await streamingResponse.json()
-      const streamingResult = streamingData.data;
+    // get Streaming data
+    const streamingResponse = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/streaming`
+    );
+    const streamingData = await streamingResponse.json();
+    const streamingResult = streamingData.data;
 
-          return {
-            props: {
-              animeResult,
-              characterResult,
-              streamingResult,
-            },
-          };
-    }
-    catch (err: any) {
-        console.log(err)
-    }
+    // get relation data
+    const relationsResponse = await fetch(
+      `https://api.jikan.moe/v4/anime/${id}/relations`
+    );
+    const relationData = await relationsResponse.json();
+    const relationResult = relationData.data;
+
+    return {
+      props: {
+        animeResult,
+        characterResult,
+        streamingResult,
+        relationResult,
+      },
+    };
+  } catch (err: any) {
+    console.log(err);
+    return {
+      props: {
+        animeResult: {},
+        characterResult: [],
+        streamingResult: [],
+        relationResult: [],
+      },
+    };
+  }
 }
+
 
 
