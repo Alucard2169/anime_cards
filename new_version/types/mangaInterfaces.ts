@@ -8,7 +8,7 @@ export interface MangaProps {
   title_japanese: string;
   title_synonyms: string[];
   type: string;
-  titles: string[];
+  titles: TitlesProps[];
   authors: AuthorProps[];
   status: string;
   chapters: number;
@@ -21,6 +21,18 @@ export interface MangaProps {
   genres: geners[];
 }
 
+export interface MangaRelationProps {
+  relation: string;
+  entry: RelationEntryProps[];
+}
+
+interface RelationEntryProps {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+}
+
 
 interface AuthorProps {
   mal_id: number;
@@ -30,7 +42,9 @@ interface AuthorProps {
 }
 
  
-   
+interface TitlesProps {
+  title: string;
+}
 
 
    

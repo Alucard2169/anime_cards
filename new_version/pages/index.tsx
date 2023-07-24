@@ -10,7 +10,7 @@ export default function Home() {
       <div className="flex flex-col justify-center gap-6">
         <p className='text-white'>Search and view details about you favorite anime or manga</p>
         <button className="m-auto bg-PRIMARY py-2 px-4 rounded-full text-xl text-MAIN font-semibold hover:scale-110 hover:bg-PRIMARY_TWO hover:text-NUTRAL transition-all duration-100 ease-in ">
-          <Link href="/content" prefetch>START YOUR JOURNEY</Link>
+          <Link href="/content">START YOUR JOURNEY</Link>
         </button>
       </div>
     </main>

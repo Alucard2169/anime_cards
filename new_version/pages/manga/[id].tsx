@@ -2,52 +2,53 @@ import { FC, useState } from "react";
 import { MangaProps } from "@/types/mangaInterfaces";
 import Image from "next/image";
 import Link from "next/link";
-import Iframe from "@/components/Iframe";
-import { AiFillPlayCircle, AiFillCaretRight } from "react-icons/ai";
-import { BiLinkExternal } from "react-icons/bi";
+
+import {  AiFillCaretRight } from "react-icons/ai";
+
 import Characters from "@/components/Characters";
 import {
   SeriesCharacterProps,
 } from "@/types/characterInterfaces";
+import {MangaRelationProps} from '@/types/mangaInterfaces'
 
 interface MangaData {
-    mangaResult: MangaProps;
+  mangaResult: MangaProps;
   characterResult: SeriesCharacterProps[];
+  relationResult: MangaRelationProps[];
 }
 
 const MangaDetails: FC<MangaData> = ({
   mangaResult,
   characterResult,
+  relationResult,
 }) => {
-console.log(characterResult)
-const addCommasToNumber = (number: number): string => {
-  return number.toLocaleString();
-};
-  const [state, setState] = useState<boolean>(false);
-  const mediaType = 'manga';
-  const {
-     mal_id,
-  url,
-  images,
-  approved,
-  title,
-  title_english,
-  title_japanese,
- 
-  type,
-      titles,
-authors,
-  status,
-  chapters,
-  volumes,
-  rank,
-  score,
-  scored_by,
-  synopsis,
-  background,
-  genres,
-  } = mangaResult;
+  console.log(characterResult);
+  const addCommasToNumber = (number: number): string => {
+    return number.toLocaleString();
+  };
 
+  const {
+    mal_id,
+    url,
+    images,
+    approved,
+    title,
+    title_english,
+    title_japanese,
+
+    type,
+    titles,
+    authors,
+    status,
+    chapters,
+    volumes,
+    rank,
+    score,
+    scored_by,
+    synopsis,
+    background,
+    genres,
+  } = mangaResult;
 
   return (
     <div className={`pt-20 p-8 w-full  gap-6 ${"animeDetailPage"}`}>
@@ -181,6 +182,26 @@ authors,
             </Link>
           </button>
         </section>
+        <section>
+          <h2 className="text-2xl text-PRIMARY font-bold mb-4">Relations</h2>
+          <ul className="flex flex-col gap-4">
+            {relationResult.map((relation, i) => (
+              <li key={i} className="flex gap-2">
+                <h4 className="bg-PRIMARY text-MAIN font-semibold w-1/6 text-center p-1 rounded-md text-xl h-fit">
+                  {relation.relation}
+                </h4>
+                {/* Use the entry as an argument in the inner map function */}
+                <div>
+                  {relation.entry.map((entry, j) => (
+                    <h5 className=" w-fit p-1 text-PRIMARY" key={j}>
+                      <Link href={entry.type === 'manga' ? `/manga/${entry.mal_id}`: `/anime/${entry.mal_id}`}>{entry.name}</Link>
+                    </h5>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     </div>
   );
@@ -207,10 +228,17 @@ export async function getServerSideProps(context: any) {
     );
     const characterData = await characterResponse.json();
     const characterResult = characterData.data.slice(0, 6);
+
+    const relationsResponse = await fetch(
+      `https://api.jikan.moe/v4/manga/${id}/relations`
+    );
+    const relationData = await relationsResponse.json();
+    const relationResult = await relationData.data;
     return {
       props: {
         mangaResult,
         characterResult,
+        relationResult,
       },
     };
   } catch (err) {
@@ -219,6 +247,7 @@ export async function getServerSideProps(context: any) {
       props: {
         mangaResult: [],
         characterResult: [],
+        relationResult:[],
       },
     };
   }

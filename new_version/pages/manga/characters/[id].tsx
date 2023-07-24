@@ -69,7 +69,6 @@ export async function getServerSideProps(context: any) {
     const characterResult = characterData.data;
     return {
       props: {
-      
         characterResult,
       },
     };
