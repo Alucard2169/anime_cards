@@ -8,6 +8,7 @@ import{BiLinkExternal} from 'react-icons/bi'
 import Characters from '@/components/Characters';
 import {  SeriesCharacterProps } from '@/types/characterInterfaces';
 import { MangaRelationProps } from '@/types/mangaInterfaces';
+import Related from '@/components/Related';
 
 interface StreamingProps {
   name: string;
@@ -226,34 +227,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
         )}
         <hr />
         {relationResult.length > 0 && (
-          <section>
-            <h2 className="text-2xl text-PRIMARY font-bold mb-4">Relations</h2>
-            <ul className="flex flex-col gap-4">
-              {relationResult.map((relation, i) => (
-                <li key={i} className="flex gap-2">
-                  <h4 className="bg-PRIMARY text-MAIN font-semibold w-1/6 text-center p-1 rounded-md text-xl h-fit">
-                    {relation.relation}
-                  </h4>
-                  {/* Use the entry as an argument in the inner map function */}
-                  <div>
-                    {relation.entry.map((entry, j) => (
-                      <h5 className=" w-fit p-1 text-PRIMARY" key={j}>
-                        <Link
-                          href={
-                            entry.type === "manga"
-                              ? `/manga/${entry.mal_id}`
-                              : `/anime/${entry.mal_id}`
-                          }
-                        >
-                          {entry.name}
-                        </Link>
-                      </h5>
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <Related data={relationResult}/>
         )}
       </div>
     </div>
