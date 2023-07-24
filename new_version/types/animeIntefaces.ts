@@ -1,17 +1,5 @@
-export interface AnimeProps {
-  mal_id: number;
-  url: string;
-  images: ImageProps;
-  approved: boolean;
-  title: string;
-  title_english: string;
-  title_japanese: string;
-  type: string;
-  episodes: number;
-  rank: number;
-  score: string;
-  rating: string;
-}
+import { MangaRelationProps } from "./mangaInterfaces";
+
 export interface ImageProps {
   webp: WebProps;
 }
@@ -58,6 +46,13 @@ export interface AnimeDetailsProps {
   title_japanese: string;
   type: string;
   year: null | number;
+  streaming: StreamingProps[];
+  relations: MangaRelationProps[];  
+}
+
+interface StreamingProps {
+  name: string;
+  url: string;
 }
 
 interface DemographicsProps {

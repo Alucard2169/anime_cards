@@ -1,4 +1,5 @@
-import { AnimeProps } from "./animeIntefaces";
+
+import { AnimeDetailsProps } from "./animeIntefaces";
 import { MangaProps } from "./mangaInterfaces";
 
 export interface CharacterProps {
@@ -16,7 +17,7 @@ export interface CharacterProps {
 
 export interface CharacterAnimeProps {
   role: string;
-  anime: AnimeProps;
+  anime: AnimeDetailsProps;
 }
 
 interface CharacterMangaProps {

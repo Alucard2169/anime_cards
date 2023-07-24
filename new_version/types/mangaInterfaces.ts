@@ -1,3 +1,4 @@
+
 export interface MangaProps {
   mal_id: number;
   url: string;
@@ -20,6 +21,7 @@ export interface MangaProps {
   background: string;
   rating: string;
   genres: geners[];
+  relations: MangaRelationProps[];
 }
 
 export interface MangaRelationProps {

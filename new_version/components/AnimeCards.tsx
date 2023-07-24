@@ -1,11 +1,11 @@
+import { AnimeDetailsProps } from "@/types/animeIntefaces";
+import Image from "next/image";
+import Link from 'next/link';
 import { FC } from 'react';
 import { GiRank1 } from "react-icons/gi";
-import { AnimeProps } from "@/types/animeIntefaces";
-import Image from "next/image";
-import Link from 'next/link'
 
 interface AnimeCardProps {
-  data: AnimeProps;
+  data: AnimeDetailsProps;
 }
 
 const AnimeCard: FC<AnimeCardProps> = ({ data }) => {

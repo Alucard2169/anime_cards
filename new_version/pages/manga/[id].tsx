@@ -1,27 +1,26 @@
-import { FC, useState } from "react";
 import { MangaProps } from "@/types/mangaInterfaces";
 import Image from "next/image";
 import Link from "next/link";
-
-import {  AiFillCaretRight } from "react-icons/ai";
+import { FC } from "react";
+import { AiFillCaretRight } from "react-icons/ai";
 
 import Characters from "@/components/Characters";
 import {
   SeriesCharacterProps,
 } from "@/types/characterInterfaces";
-import {MangaRelationProps} from '@/types/mangaInterfaces'
+
 import Related from "@/components/Related";
 
 interface MangaData {
   mangaResult: MangaProps;
   characterResult: SeriesCharacterProps[];
-  relationResult: MangaRelationProps[];
+
 }
 
 const MangaDetails: FC<MangaData> = ({
   mangaResult,
   characterResult,
-  relationResult,
+
 }) => {
 
   const addCommasToNumber = (number: number): string => {
@@ -32,11 +31,9 @@ const MangaDetails: FC<MangaData> = ({
     mal_id,
     url,
     images,
-    approved,
     title,
     title_english,
     title_japanese,
-
     type,
     titles,
     authors,
@@ -49,6 +46,7 @@ const MangaDetails: FC<MangaData> = ({
     synopsis,
     background,
     genres,
+    relations,
   } = mangaResult;
 
   return (
@@ -124,10 +122,17 @@ const MangaDetails: FC<MangaData> = ({
                 {score || "??"}
               </span>
             </li>
+            
             <li className="text-MAIN bg-PRIMARY p-1 font-bold rounded-md">
               Score By{" "}
               <span className="ml-2 bg-MAIN p-1 text-PRIMARY">
                 {addCommasToNumber(scored_by) || "??"} People
+              </span>
+            </li>
+            <li className="text-MAIN bg-PRIMARY p-1 font-bold rounded-md">
+              Rank{" "}
+              <span className="ml-2 bg-MAIN p-1 text-PRIMARY">
+                {rank}
               </span>
             </li>
           </ul>
@@ -183,7 +188,7 @@ const MangaDetails: FC<MangaData> = ({
             </Link>
           </button>
         </section>
-        {relationResult.length > 0 &&  <Related data={relationResult}/>}
+        {relations.length > 0 &&  <Related data={relations}/>}
       </div>
     </div>
   );
@@ -195,7 +200,7 @@ export async function getServerSideProps(context: any) {
 
   try {
     // Fetch manga data
-    const mangaResponse = await fetch(`https://api.jikan.moe/v4/manga/${id}`);
+    const mangaResponse = await fetch(`https://api.jikan.moe/v4/manga/${id}/full`);
     if (!mangaResponse.ok) {
       throw new Error("Failed to fetch manga data.");
     }
@@ -211,16 +216,12 @@ export async function getServerSideProps(context: any) {
     const characterData = await characterResponse.json();
     const characterResult = characterData.data.slice(0, 6);
 
-    const relationsResponse = await fetch(
-      `https://api.jikan.moe/v4/manga/${id}/relations`
-    );
-    const relationData = await relationsResponse.json();
-    const relationResult = await relationData.data;
+  
     return {
       props: {
         mangaResult,
         characterResult,
-        relationResult,
+
       },
     };
   } catch (err) {
@@ -229,7 +230,7 @@ export async function getServerSideProps(context: any) {
       props: {
         mangaResult: [],
         characterResult: [],
-        relationResult:[],
+
       },
     };
   }
