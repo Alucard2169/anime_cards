@@ -1,13 +1,13 @@
 import MediaCardsContainer from "@/components/ScrollCardContainer";
-import { AnimeProps } from "@/types/animeIntefaces";
-import { MangaProps } from "@/types/mangaInterfaces";
+import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import { CharacterProps } from "@/types/characterInterfaces";
+import { MangaProps } from "@/types/mangaInterfaces";
 
 
 
 
 interface ContentProps {
-  animeResult: AnimeProps[];
+  animeResult: AnimeDetailsProps[];
   mangaResult: MangaProps[];
   characterResult: CharacterProps[];
 }
@@ -18,21 +18,21 @@ const Content: React.FC<ContentProps> = ({ animeResult, mangaResult, characterRe
   return (
     <div className="flex flex-col gap-12 p-6 pt-16">
       <section className="flex flex-col gap-6">
-        <h1 className="text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
+        <h1 className="text-md sm:text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
           Currently Popular In Anime
         </h1>
         <MediaCardsContainer data={animeResult} type="anime" />
       </section>
       <hr />
       <section className="flex flex-col gap-6">
-        <h1 className="text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
+        <h1 className="text-md sm:text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
           Currently Popular In Manga
         </h1>
         <MediaCardsContainer data={mangaResult} type="manga" />
       </section>
       <hr />
       <section className="flex flex-col gap-6">
-        <h1 className="text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
+        <h1 className="text-md sm:text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
           Currently Popular In Characters
         </h1>
         <MediaCardsContainer data={characterResult} type="character" />

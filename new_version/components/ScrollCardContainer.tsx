@@ -1,14 +1,14 @@
+import { AnimeDetailsProps } from "@/types/animeIntefaces";
+import { CharacterProps } from "@/types/characterInterfaces";
+import { MangaProps } from "@/types/mangaInterfaces";
 import React, { useRef } from "react";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
-import { AnimeProps } from "@/types/animeIntefaces";
-import { MangaProps } from "@/types/mangaInterfaces";
-import { CharacterProps } from "@/types/characterInterfaces";
 import AnimeCard from "./AnimeCards";
-import MangaCard from "./MangaCards";
 import CharacterCard from "./CharacterCard";
+import MangaCard from "./MangaCards";
 
 interface MediaCardsContainerProps {
-  data: (AnimeProps | MangaProps | CharacterProps)[];
+  data: (AnimeDetailsProps | MangaProps | CharacterProps)[];
   type: string;
 }
 
@@ -35,15 +35,15 @@ const MediaCardsContainer: React.FC<MediaCardsContainerProps> = ({
     <div className="overflow-hidden flex items-center">
       <AiFillCaretLeft
         onClick={handleLeftScroll}
-        className="ml-8 text-white text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"
+        className="ml-0 sm:ml-8 text-white text-xl sm:text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"
       />
       <div
         ref={scrollRef}
-        className="flex gap-12 h-full overflow-x-scroll w-10/12 m-auto scroll-smooth scrollbar-thin scrollbar-thumb-PRIMARY scrollbar-track-MAIN"
+        className="flex gap-6 sm:gap-12 h-full overflow-x-scroll w-full sm:w-10/12 m-auto scroll-smooth scrollbar-thin scrollbar-thumb-PRIMARY scrollbar-track-MAIN"
       >
         {type === "anime" &&
           data.map((media) => (
-            <AnimeCard key={media.mal_id} data={media as AnimeProps} />
+            <AnimeCard key={media.mal_id} data={media as AnimeDetailsProps} />
           ))}
         {type === "manga" &&
           data.map((media) => (
@@ -56,7 +56,7 @@ const MediaCardsContainer: React.FC<MediaCardsContainerProps> = ({
       </div>
       <AiFillCaretRight
         onClick={handleRightScroll}
-        className="mr-8 text-white  text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"
+        className="mr-0 sm:mr-8 text-white  text-xl sm:text-3xl hover:text-PRIMARY cursor-pointer transition-all duration-200 ease"
       />
     </div>
   );

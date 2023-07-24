@@ -14,7 +14,7 @@ const Characters: React.FC<CharacterProps> = ({ data }) => {
       <Link key={mal_id} href={`/characters/${mal_id}`}>
         <div
           key={mal_id}
-          className="z-1 relative flex flex-col gap-2  w-32 max-w-fit h-52 rounded-md overflow-hidden"
+          className=" z-1 relative flex flex-col gap-2  w-32 max-w-fit h-52 rounded-md overflow-hidden"
           onMouseOver={() => setVisibility(1)}
           onMouseLeave={() => setVisibility(0)}
         >

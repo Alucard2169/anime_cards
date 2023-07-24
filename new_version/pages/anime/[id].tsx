@@ -53,10 +53,10 @@ const AnimeDeatails: FC<AnimeProps> = ({
   const { youtube_id, embed_url } = trailer;
 
   return (
-    <div className={`pt-20 p-8 w-full  gap-6 ${"animeDetailPage"}`}>
+    <div className={`pt-20 p-2 sm:p-8 w-full gap-6 ${"animeDetailPage"}`}>
       <div className="w-full bg-PRIMARY_TWO p-3">
         <section className="p-2 bg-PRIMARY w-fit flex flex-col items-center rounded-md gap-4">
-          <div className="border border-MAIN border-8 rounded-md overflow-hidden">
+          <div className="w-44 h-3/5 sm:w-auto sm:h-auto border border-MAIN border-8 rounded-md overflow-hidden">
             <Image
               src={`${images.webp.large_image_url}`}
               alt={title || title_japanese}
@@ -171,10 +171,10 @@ const AnimeDeatails: FC<AnimeProps> = ({
         <div>
           {embed_url && (
             <button
-              className="text-xl text-white font-bold flex items-center"
+              className="text-md sm:text-xl text-white font-bold flex items-center"
               onClick={() => setState(true)}
             >
-              <AiFillPlayCircle className="mr-2 w-12 h-12" />
+              <AiFillPlayCircle className="mr-2 w-8 h-8 sm:w-12 sm:h-12" />
               Play Trailer
             </button>
           )}
@@ -186,23 +186,23 @@ const AnimeDeatails: FC<AnimeProps> = ({
             />
           ) : null}
         </div>
-        <div className="flex gap-4 w-full ">
-          <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
-            <h2 className="text-PRIMARY font-bold text-2xl">Synopsis</h2>
+        <div className="flex flex-col sm:flex-row gap-4 w-full ">
+          <section className="bg-PRIMARY_TWO p-2 rounded-sm w-full sm:w-1/2">
+            <h2 className="text-PRIMARY font-bold text-xl sm:text-2xl">Synopsis</h2>
             <p className="text-white mt-4 leading-6">{synopsis}</p>
           </section>
           {background && (
             <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
-              <h2 className="text-PRIMARY font-bold text-2xl">Background</h2>
+              <h2 className="text-PRIMARY font-bold text-xl sm:text-2xl">Background</h2>
               <p className="text-white mt-4 leading-6">{background}</p>
             </section>
           )}
         </div>
         <section className="flex flex-col gap-4">
-          <h2 className="text-2xl text-PRIMARY font-bold">
+          <h2 className="text-xl sm:text-2xl text-PRIMARY font-bold">
             Notable Characters
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-6 gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-5">
             {characterResult.map((character, i) => (
               <Characters data={character} key={i} />
             ))}
@@ -220,8 +220,8 @@ const AnimeDeatails: FC<AnimeProps> = ({
         <hr />
         {streaming.length > 0 && (
           <section className="flex flex-col gap-4">
-            <h2 className="text-2xl text-PRIMARY font-bold">Streaming</h2>
-            <div className="flex gap-4 align-center">
+            <h2 className="text-xl sm:text-2xl text-PRIMARY font-bold">Streaming</h2>
+            <div className="flex gap-4 align-center flex-wrap">
               {streaming.map((stream) => (
                 <span className="cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center">
                   <a href={`${stream.url}`} target="_blank">
@@ -236,11 +236,11 @@ const AnimeDeatails: FC<AnimeProps> = ({
         <hr />
         {relations.length > 0 && (
           <section>
-            <h2 className="text-2xl text-PRIMARY font-bold mb-4">Relations</h2>
+            <h2 className="text-xl sm:text-2xl text-PRIMARY font-bold mb-4">Relations</h2>
             <ul className="flex flex-col gap-4">
               {relations.map((relation, i) => (
                 <li key={i} className="flex gap-2">
-                  <h4 className="bg-PRIMARY text-MAIN font-semibold w-1/6 text-center p-1 rounded-md text-xl h-fit">
+                  <h4 className="bg-PRIMARY text-MAIN font-semibold w-32 sm:w-1/6 text-center p-1 rounded-md text-lg sm:text-xl h-fit">
                     {relation.relation}
                   </h4>
                   {/* Use the entry as an argument in the inner map function */}

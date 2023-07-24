@@ -15,10 +15,10 @@ const AnimeCard: FC<AnimeCardProps> = ({ data }) => {
   return (
     <Link href={`/anime/${mal_id}`}>
       <div
-        className="flex h-full flex-col justify-between gap-2  p-2 rounded-md hover:bg-PRIMARY_TWO transition-all duratoin-100 ease-in"
+        className="flex h-full flex-col justify-between gap-2  p-2 rounded-md hover:bg-PRIMARY_TWO transition-all duration-100 ease-in"
         title={title || title_english || title_japanese}
       >
-        <div className="relative w-44 h-4/5 rounded-md overflow-hidden">
+        <div className=" w-28 h-4/6 sm:w-44 sm:h-4/5 rounded-md overflow-hidden">
           
           <Image
             src={image_url}
@@ -29,20 +29,20 @@ const AnimeCard: FC<AnimeCardProps> = ({ data }) => {
           />
         </div>
         <div className="mb-auto flex flex-col justify-between h-1/5 gap-4">
-          <h3 className="text-center text-sm text-white font-semibold">
+          <h3 className="text-center text-xs sm:text-sm text-white font-semibold">
             {(title && title.slice(0,50)) ||
               (title_english && title_english.slice(0, 50)) ||
               title_japanese}
           </h3>
           <aside className="flex justify-between px-2">
-            <span className="text-sm text-PRIMARY rounded-md font-semibold">
+            <span className="text-xs sm:text-sm text-PRIMARY rounded-md font-semibold">
               {type}
             </span>
-            <span className="text-sm text-PRIMARY rounded-md font-semibold">
+            <span className="text-xs sm:text-sm text-PRIMARY rounded-md font-semibold">
               {episodes || "??"}
             </span>
-            <span className="text-sm text-PRIMARY rounded-md font-semibold flex gap-1 items-center">
-              <GiRank1 className="text-lg" />#{rank}
+            <span className="text-xs sm:text-sm text-PRIMARY rounded-md font-semibold flex gap-1 items-center">
+              <GiRank1 className=" text-sm sm:text-lg" />#{rank}
             </span>
           </aside>
         </div>

@@ -29,7 +29,7 @@ const Iframe: React.FC<IframeProps> = ({ state, setState, data }) => {
     <div
       className={`${
         !state ? "hidden" : ""
-      } fixed bg-black bg-opacity-90 w-screen h-screen inset-0 flex justify-center items-center`}
+      } z-50 fixed bg-black bg-opacity-90 w-screen h-screen inset-0 flex justify-center items-center`}
       data-set="backdrop"
       onClick={handleIFrameClose}
     >
@@ -37,10 +37,10 @@ const Iframe: React.FC<IframeProps> = ({ state, setState, data }) => {
         width="560"
         height="315"
         src={embed_url || ""}
-              title={title || title_japanese} 
+        title={title || title_japanese}
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
-        className="w-4/5 h-4/5"
+        className="w-11/12 h-2/6 sm:w-4/5 sm:h-4/5"
       ></iframe>
     </div>
   );
