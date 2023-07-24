@@ -22,7 +22,7 @@ const MangaDetails: FC<MangaData> = ({
   characterResult,
   relationResult,
 }) => {
-  console.log(characterResult);
+
   const addCommasToNumber = (number: number): string => {
     return number.toLocaleString();
   };

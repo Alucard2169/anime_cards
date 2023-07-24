@@ -18,6 +18,7 @@ export interface MangaProps {
   scored_by: number;
   synopsis: string;
   background: string;
+  rating: string;
   genres: geners[];
 }
 

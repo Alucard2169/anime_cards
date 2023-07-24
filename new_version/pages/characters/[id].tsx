@@ -11,7 +11,7 @@ export interface CharaProps {
 }
 
 const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
-  console.log(characterResult);
+
     const [state, setState] = useState<boolean>(false);
      const [showAllAnime, setShowAllAnime] = useState<boolean>(false);
 
