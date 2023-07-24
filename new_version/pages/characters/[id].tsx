@@ -1,36 +1,32 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {AiFillCaretRight} from 'react-icons/ai'
 
 import {
   CharacterProps,
 } from "@/types/characterInterfaces";
 
-export interface CharaProps {
+ interface CharaProps {
   characterResult: CharacterProps
 }
 
 const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
 
-    const [state, setState] = useState<boolean>(false);
-     const [showAllAnime, setShowAllAnime] = useState<boolean>(false);
+
 
   const {
+    mal_id,
     images,
     name,
     name_kanji,
 
       about,
       nicknames,
-      anime,
-   manga,
+
+
   } = characterResult;
 
-  const truncatedAnime = anime.slice(0, 4); // Truncate anime data to first 15 items
-
-  const toggleShowAllAnime = () => {
-    setShowAllAnime((prev) => !prev); // Toggle the state to show all anime
-  };
 
 
   return (
@@ -74,34 +70,17 @@ const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
             <p className="text-white mt-4 leading-6">{about}</p>
           </section>
         </div>
-        <h2 className="text-2xl text-PRIMARY font-semibold">Animes</h2>
-        <div className="grid grid-cols-4 gap-3">
-          {truncatedAnime.map((an) => (
-            <Link href={`/anime/${an.anime.mal_id}`}>
-              <div
-                className="bg-PRIMARY_TWO w-full h-fit flex flex-col gap-1 items-center pr-5 rounded-md overflow-hidden"
-                title={an.anime.title}
-              >
-                <div className="w-full h-40">
-                  <Image
-                    src={an.anime.images.webp.large_image_url}
-                    alt={an.anime.title}
-                    width={205}
-                    height={200}
-                    layout="responsive"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="bg-MAIN w-full p-2 text-center">
-                  <h4 className="font-semibold text-PRIMARY truncate">
-                    {an.anime.title}
-                  </h4>
-                  <span className="text-white">{an.role}</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <h2 className="text-xl text-PRIMARY font-semibold">
+          <Link href={`/characters/anime/${mal_id}`} className="flex items-end">
+            View All Anime Roles <AiFillCaretRight />
+          </Link>
+        </h2>
+        <h2 className="text-xl text-PRIMARY font-semibold">
+          <Link href={`/characters/manga/${mal_id}`} className="flex items-end">
+            View All Manga Roles <AiFillCaretRight />
+          </Link>
+        </h2>
+       
       </div>
     </div>
   );
