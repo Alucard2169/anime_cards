@@ -16,7 +16,7 @@ interface ContentProps {
 
 const Content: React.FC<ContentProps> = ({ animeResult, mangaResult, characterResult }) => {
   return (
-    <div className="flex flex-col gap-12 p-6 pt-16">
+    <div className="flex flex-col gap-12 px-6 pt-16">
       <section className="flex flex-col gap-6">
         <h1 className="text-md sm:text-2xl text-PRIMARY p-2 rounded-md w-fit font-bold">
           Currently Popular In Anime

@@ -23,9 +23,9 @@ const MangaDetails: FC<MangaData> = ({
 
 }) => {
 
-  const addCommasToNumber = (number: number): string => {
-    return number.toLocaleString();
-  };
+   const addCommasToNumber = (number: number): string => {
+     return number.toLocaleString("en-IN");
+   };
 
   const {
     mal_id,

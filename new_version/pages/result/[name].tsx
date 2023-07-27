@@ -1,11 +1,11 @@
 import MediaCardsContainer from "@/components/ScrollCardContainer";
-import { AnimeProps } from "@/types/animeIntefaces";
+import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import { CharacterProps } from "@/types/characterInterfaces";
 import { MangaProps } from "@/types/mangaInterfaces";
 import { FC } from "react";
 
 interface ResultProps {
-  animeResult: AnimeProps[] | null;
+  animeResult: AnimeDetailsProps[] | null;
   mangaResult: MangaProps[] | null;
     characterResult: CharacterProps[] | null;
     name: string;

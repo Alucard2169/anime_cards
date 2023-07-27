@@ -10,7 +10,7 @@ interface CharacterCardProps {
 
 const CharacterCard: FC<CharacterCardProps> = ({ data }) => {
   const addCommasToNumber = (number: number): string => {
-    return number.toLocaleString();
+    return number.toLocaleString("en-IN");
   };
   const { mal_id,images, name, name_kanji, favorites } =
     data;
