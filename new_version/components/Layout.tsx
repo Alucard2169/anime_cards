@@ -1,7 +1,7 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { FC, ReactNode, useEffect, useState } from "react";
 import Loading from "./Loading";
-import { useRouter } from "next/router";
 
 type LayoutProps = {
   children: ReactNode;
@@ -30,13 +30,13 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   }, []);
 
   return (
-    <>
+    <div className="w-fit overflow-x-hidden flex flex-col gap-20">
       <Head>
         <title>Otaku Cards</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       {isLoading ? <Loading /> : children}
-    </>
+    </div>
   );
 };
 

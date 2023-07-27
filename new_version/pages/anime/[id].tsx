@@ -22,8 +22,9 @@ const AnimeDeatails: FC<AnimeProps> = ({
   characterResult,
 }) => {
   const addCommasToNumber = (number: number): string => {
-    return number.toLocaleString();
+    return number.toLocaleString("en-IN");
   };
+
   const [state, setState] = useState<boolean>(false);
 
   const {
@@ -53,8 +54,10 @@ const AnimeDeatails: FC<AnimeProps> = ({
 
   const { youtube_id, embed_url } = trailer;
 
+
+
   return (
-    <div className={`pt-20 p-2 sm:p-8 w-full gap-6 ${"animeDetailPage"}`}>
+    <div className={`pt-20 px-2 sm:px-8 w-full gap-6 ${"animeDetailPage"}`}>
       <div className="w-full bg-PRIMARY_TWO p-3">
         <section className="p-2 bg-PRIMARY w-fit flex flex-col items-center rounded-md gap-4">
           <div className="w-44 h-3/5 sm:w-auto sm:h-auto border border-MAIN border-8 rounded-md overflow-hidden">

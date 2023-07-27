@@ -1,7 +1,6 @@
-import { useState } from "react";
 import Characters from "@/components/Characters";
 import { SeriesCharacterProps } from "@/types/characterInterfaces";
-import { FC } from "react";
+import { FC, useState } from "react";
 
 interface AnimeCharacterProps {
   characterResult: SeriesCharacterProps[];
@@ -21,7 +20,7 @@ const AnimeCharacters: FC<AnimeCharacterProps> = ({ characterResult }) => {
   );
 
   return (
-    <section className="pt-20 p-8 w-full">
+    <section className="pt-20 px-2 sm:px-8 w-full">
       <div className="flex justify-between items-center  mb-8">
         <h1 className="text-2xl text-PRIMARY font-bold">
           Total Characters :{" "}
