@@ -50,10 +50,10 @@ const MangaDetails: FC<MangaData> = ({
   } = mangaResult;
 
   return (
-    <div className={`pt-20 p-8 w-full  gap-6 ${"animeDetailPage"}`}>
+    <div className={`pt-20 p-2 sm:p-8 w-full  gap-6 ${"animeDetailPage"}`}>
       <div className="w-full bg-PRIMARY_TWO p-3">
         <section className="p-2 bg-PRIMARY w-fit flex flex-col items-center rounded-md gap-4">
-          <div className="border border-MAIN border-8 rounded-md overflow-hidden">
+          <div className="w-44 h-3/5 sm:w-auto sm:h-auto border border-MAIN border-8 rounded-md overflow-hidden">
             <Image
               src={`${images.webp.large_image_url}`}
               alt={title || title_japanese}
@@ -157,23 +157,23 @@ const MangaDetails: FC<MangaData> = ({
         </div>
       </div>
       <div className="flex flex-col gap-8 w-full">
-        <div className="flex gap-4 w-full h-fit">
+        <div className="flex flex-col sm:flex-row gap-4 w-full h-fit">
           <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
             <h2 className="text-PRIMARY font-bold text-2xl">Synopsis</h2>
-            <p className="text-white mt-4 leading-6">{synopsis}</p>
+            <p className="text-white text-sm sm:text-md mt-4 leading-6">{synopsis}</p>
           </section>
           {background && (
             <section className="bg-PRIMARY_TWO p-2 rounded-sm sm:w-1/2">
               <h2 className="text-PRIMARY font-bold text-2xl">Background</h2>
-              <p className="text-white mt-4 leading-6">{background}</p>
+              <p className="text-white text-sm sm:text-md mt-4 leading-6">{background}</p>
             </section>
           )}
         </div>
         <section className="flex flex-col gap-4">
-          <h2 className="text-2xl text-PRIMARY font-bold">
+          <h2 className="text-xl sm:text-2xl text-PRIMARY font-bold">
             Notable Characters
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-6 gap-5">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-5">
             {characterResult.map((character, i) => (
               <Characters data={character} key={i} />
             ))}
