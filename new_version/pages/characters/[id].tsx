@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {AiFillCaretRight} from 'react-icons/ai'
+import { FC } from "react";
+import { AiFillCaretRight } from 'react-icons/ai';
 
 import {
   CharacterProps,
@@ -30,10 +30,10 @@ const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
 
 
   return (
-    <div className={`pt-20 p-8 w-full  gap-6 ${"animeDetailPage"}`}>
+    <div className={`pt-20 p-2 sm:p-8 w-full gap-6 ${"animeDetailPage"}`}>
       <div className="w-full bg-PRIMARY_TWO p-3">
-        <section className="p-2 bg-PRIMARY w-fit flex flex-col items-center rounded-md gap-4">
-          <div className="border border-MAIN border-8 rounded-md overflow-hidden">
+        <section className="p-2 bg-PRIMARY w-fit mx-auto flex  flex-col items-center rounded-md gap-4">
+          <div className=" w-44 h-3/5 sm:w-auto sm:h-auto border border-MAIN border-8 rounded-md overflow-hidden">
             <Image
               src={`${images.webp.image_url}`}
               alt={name || name_kanji}
@@ -67,7 +67,7 @@ const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
         <div className="flex gap-4 w-full ">
           <section className="bg-PRIMARY_TWO p-2 rounded-sm ">
             <h2 className="text-PRIMARY font-bold text-2xl">About</h2>
-            <p className="text-white mt-4 leading-6">{about}</p>
+            <p className="text-sm sm:text-lg text-white mt-4 leading-6">{about}</p>
           </section>
         </div>
         <h2 className="text-xl text-PRIMARY font-semibold">
@@ -80,7 +80,6 @@ const CharacterDetails: FC<CharaProps> = ({ characterResult }) => {
             View All Manga Roles <AiFillCaretRight />
           </Link>
         </h2>
-       
       </div>
     </div>
   );
