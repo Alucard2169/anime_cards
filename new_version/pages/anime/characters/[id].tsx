@@ -8,6 +8,7 @@ interface AnimeCharacterProps {
 
 const AnimeCharacters: FC<AnimeCharacterProps> = ({ characterResult }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  console.log(characterResult)
 
   // Function to handle search input change
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {

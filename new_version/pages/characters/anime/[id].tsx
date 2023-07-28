@@ -12,12 +12,12 @@ const CharacterAnime: FC<CharacterAnimeProps> = ({ characterResult }) => {
     return (
       <div className="pt-20 px-2 sm:px-4 flex flex-col gap-8">
         <h1 className="text-md sm:text-2xl text-PRIMARY font-semibold">
-          {name}'s anime appearances
+          {name}&apos;s anime appearances
             </h1>
             <span className="text-PRIMARY text-sm sm:text-lg">total: {anime.length}</span>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
           {anime.map((an) => (
-            <Link href={`/anime/${an.anime.mal_id}`}>
+            <Link href={`/anime/${an.anime.mal_id}`} key={an.anime.mal_id}>
               <div
                 className="flex w-fit h-full flex-col justify-between items-center gap-2  p-2 rounded-md hover:bg-PRIMARY_TWO transition-all duratoin-100 ease-in"
                 title={an.anime.title}

@@ -1,16 +1,21 @@
 import Characters from "@/components/Characters";
-import { SeriesCharacterProps } from "@/types/characterInterfaces";
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
+
+interface Character {
+  character: {
+    name: string;
+  };
+}
 
 interface AnimeCharacterProps {
-  characterResult: SeriesCharacterProps[];
+  characterResult: Character[];
 }
 
 const AnimeCharacters: FC<AnimeCharacterProps> = ({ characterResult }) => {
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Function to handle search input change
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 
@@ -21,7 +26,7 @@ const AnimeCharacters: FC<AnimeCharacterProps> = ({ characterResult }) => {
 
   return (
     <section className="pt-20 px-2 sm:px-8 w-full">
-      <div className="flex justify-between items-center  mb-8">
+      <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl text-PRIMARY font-bold">
           Total Characters :{" "}
           <span className="bg-PRIMARY_TWO rounded-md p-2">
@@ -43,8 +48,8 @@ const AnimeCharacters: FC<AnimeCharacterProps> = ({ characterResult }) => {
         </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-6 gap-5">
-        {filteredCharacters.map((character, i) => (
-          <Characters data={character} key={i} />
+        {filteredCharacters.map((character) => (
+          <Characters data={character} key={character.character.name} />
         ))}
       </div>
     </section>
@@ -57,10 +62,8 @@ export async function getServerSideProps(context: any) {
   const { id } = context.query;
 
   try {
-    
-    
     // Fetch character data
-    
+
     const characterResponse = await fetch(
       `https://api.jikan.moe/v4/manga/${id}/characters`
     );

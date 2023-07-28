@@ -227,7 +227,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
             <h2 className="text-xl sm:text-2xl text-PRIMARY font-bold">Streaming</h2>
             <div className="flex gap-4 align-center flex-wrap">
               {streaming.map((stream) => (
-                <span className="cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center">
+                <span key={stream.name} className="cursor-pointer bg-PRIMARY text-MAIN rounded-md p-1 font-semibold flex gap-2 items-center">
                   <a href={`${stream.url}`} target="_blank">
                     {stream.name}
                   </a>{" "}

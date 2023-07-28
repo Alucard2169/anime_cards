@@ -38,7 +38,7 @@ export interface WebProps {
 
 
 export interface SeriesCharacterProps {
-  characters: CharacterProps;
+  character: CharacterProps;
   role: string;
   favorite: number;
 }
