@@ -27,6 +27,15 @@
     gap: 2rem;
 }
 
+.navbar .newVer{
+    background-color: white ;
+    color: black;
+    padding: .5rem .2rem;
+    border-radius: 10px;
+    margin-right: auto;
+    margin-left: 1rem;
+}
+
 .hide{
     display: none;
 }
