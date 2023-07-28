@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useEffect, useState } from "react";
+import Footer from "./Footer";
 import Loading from "./Loading";
+import Navbar from "./Navbar";
 
 type LayoutProps = {
   children: ReactNode;
@@ -29,13 +31,24 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     };
   }, [router.events]);
 
+  // Check if the current route is '/'
+  const isRootRoute = router.pathname === "/";
+
   return (
     <>
       <Head>
-        <title>Otaku Cards</title>
+        <title>Anime Cards</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      {isLoading ? <Loading /> : children}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="flex flex-col gap-2">
+          <Navbar />
+          {children}
+          {!isRootRoute && <Footer />}
+        </div>
+      )}
     </>
   );
 };

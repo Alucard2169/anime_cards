@@ -1,11 +1,11 @@
-import Image from 'next/image'
+import HomepageIcon from '@/components/HomePageIcon';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen  flex flex-col justify-center items-center gap-10">
+    <main className="pt-56 w-screen flex flex-col justify-center items-center gap-10">
       <h1 className="text-4xl font-bold text-white">
-        <span className="text-PRIMARY">Otaku</span> Cards
+        <HomepageIcon/>
       </h1>
       <div className="flex flex-col justify-center gap-6">
         <p className='text-white'>Search and view details about you favorite anime or manga</p>

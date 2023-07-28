@@ -1,13 +1,17 @@
-import Layout from '@/components/Layout'
-import Navbar from '@/components/Navbar';
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+
+import Layout from '@/components/Layout';
+import '@/styles/globals.css';
+import { AnimatePresence } from 'framer-motion';
+import type { AppProps } from 'next/app';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Navbar />
-      <Component {...pageProps} />
-    </Layout>
+    <AnimatePresence>
+      <Layout>
+        
+        <Component {...pageProps} />
+
+      </Layout>
+    </AnimatePresence>
   );
 }
