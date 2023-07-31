@@ -48,7 +48,7 @@ export async function getServerSideProps() {
       
         //get anime data
     const animeResponse = await fetch(
-      "https://api.jikan.moe/v4/top/anime?filter=airing&page=1"
+      "https://api.jikan.moe/v4/top/anime?filter=airing&page=1&sfw"
     );
       const animeData = await animeResponse.json();
     
@@ -57,7 +57,7 @@ export async function getServerSideProps() {
 
 //get manga data
       const mangaResponse = await fetch(
-        "https://api.jikan.moe/v4/top/manga?filter=publishing&page=1"
+        "https://api.jikan.moe/v4/top/manga?filter=publishing&page=1&sfw"
       );
       const mangaData = await mangaResponse.json()
         const mangaResult = mangaData.data;

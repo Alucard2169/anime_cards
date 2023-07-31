@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+
+
+
 const HomepageIcon = () => {
 const pathVariants = {
   hidden: {
