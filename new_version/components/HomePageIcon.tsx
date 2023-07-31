@@ -16,7 +16,7 @@ const pathVariants = {
 };
     
     return (
-      <div className="flex justify-center gap-5 w-72 sm:w-auto">
+      <div className="flex justify-center gap-5 z-20 w-72 sm:w-auto">
         <motion.svg
           width="201"
           className="anime_logo"
