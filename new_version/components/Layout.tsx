@@ -43,7 +43,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 relative w-full min-h-screen">
           <Navbar />
           {children}
           {!isRootRoute && <Footer />}

@@ -13,6 +13,9 @@ module.exports = {
         PRIMARY_TWO: "#4E596F",
         NUTRAL: "#FFFFFF",
       },
+      backgroundImage: {
+        "heroBackground": "url('/mainBackground.webp')",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")],

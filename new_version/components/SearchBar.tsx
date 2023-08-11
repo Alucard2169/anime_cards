@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { LiaSearchSolid } from 'react-icons/lia';
 
 const SearchBar = () => {
   const router = useRouter();
@@ -16,14 +17,17 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        id="searchQuery"
-        placeholder="Bleach"
-        value={query}
-        onChange={handleOnChange}
-        className="rounded-full bg-MAIN py-2 px-4 border-none outline-none focus:border-MAIN text-PRIMARY placeholder:text-PRIMARY_TWO"
-      />
+      <label htmlFor="query" className="relative flex items-center">
+        <LiaSearchSolid className="absolute left-2 text-PRIMARY text-xl"/>
+        <input
+          type="text"
+          id="query"
+          placeholder="Bleach"
+          value={query}
+          onChange={handleOnChange}
+          className="pl-10  rounded-full bg-transparent  py-2 px-4 border-none outline-none outline-1 outline-transparents focus:outline focus:outline-PRIMARY text-PRIMARY placeholder:text-purple-300 transition-all duration-100"
+        />
+      </label>
     </form>
   );
 };
