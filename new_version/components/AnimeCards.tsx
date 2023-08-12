@@ -36,14 +36,14 @@ const AnimeCard: FC<AnimeCardProps> = ({ data }) => {
           />
         </div>
         <div className="h-1/5 px-2 flex flex-col w-full">
-          <h2 className="text-red-500  text-sm">
+          <h2 className="text-purple-600  text-sm">
             {title || title_english || title_japanese}
           </h2>
           <div className="mt-auto flex items-center justify-between w-full">
             <p className="text-white text-xs">
               Ep: <span>{episodes || "__"}</span>
             </p>
-            <span className="text-xs outline outline-1 outline-red-600 p-1 text-white rounded-md font-semibold">
+            <span className="text-xs outline outline-1 outline-purple-600 p-1 text-white rounded-md font-semibold">
               {type}
             </span>
           </div>
