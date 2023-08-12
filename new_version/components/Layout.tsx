@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useEffect, useState } from "react";
-import Footer from "./Footer";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
 
@@ -31,8 +30,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     };
   }, [router.events]);
 
-  // Check if the current route is '/'
-  const isRootRoute = router.pathname === "/";
 
   return (
     <>
@@ -46,7 +43,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <div className="flex flex-col gap-2 relative w-full min-h-screen">
           <Navbar />
           {children}
-          {!isRootRoute && <Footer />}
+      
         </div>
       )}
     </>

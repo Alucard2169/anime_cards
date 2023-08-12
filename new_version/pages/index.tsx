@@ -21,7 +21,7 @@ export default function Home() {
         <button
           className={`${dosis.className} mt-10 z-50 w-fit py-1 px-2 text-md sm:text-xl sm:py-2 sm:px-4 outline-1 outline-PRIMARY outline rounded-full text-PRIMARY font-semibold hover:outline-none hover:text-PRIMARY transition-all duration-100 ease-in`}
         >
-          <Link href="/content">START YOUR JOURNEY</Link>
+          <Link href="/browse/content">START YOUR JOURNEY</Link>
         </button>
       </section>
     </main>
