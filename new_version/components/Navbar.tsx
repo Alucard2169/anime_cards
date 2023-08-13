@@ -1,11 +1,14 @@
 import logo from '@/public/favicon.png';
 import Image from "next/image";
 import Link from 'next/link';
+import { FC } from 'react';
 import SearchBar from "./SearchBar";
 
-const Navbar = () => {
-    return (
-      <nav className="z-50 fixed top-0  w-full py-2 px-4 bg-transparent">
+type NavbarProps = {page: boolean}
+
+const Navbar: FC<NavbarProps> = ({ page }) => {
+  return (
+    <nav className={`z-50 fixed top-0  w-full py-2 px-4 ${page ? "bg-transparent" : "bg-black"}`}>
         <ul className="flex justify-between items-center">
           <li>
             <Link href="/">

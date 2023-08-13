@@ -31,6 +31,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   }, [router.events]);
 
 
+const currentPage = router.pathname === "/" ? true : false;
+
+
+
   return (
     <>
       <Head>
@@ -41,7 +45,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <Loading />
       ) : (
         <div className="flex flex-col gap-2 relative w-full min-h-screen">
-          <Navbar />
+            <Navbar page={currentPage} />
           {children}
       
         </div>

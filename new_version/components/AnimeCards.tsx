@@ -25,7 +25,7 @@ const AnimeCard: FC<AnimeCardProps> = ({ data }) => {
 
   return (
     <Link href={`/anime/${mal_id}`}>
-      <div className="relative flex flex-col gap-2 items-start w-full h-full">
+      <div className="relative flex flex-col  items-start w-4/5 h-full">
         <div className="w-full h-4/5">
           <Image
             src={large_image_url}

@@ -1,6 +1,9 @@
-import AnimeCard from "@/components/AnimeCards";
+import AnimeCardContainer from "@/components/AnimeCardContainer";
+import FilterComponent from "@/components/FilterComponent";
+import GenreFilter from "@/components/GenreFilter";
 import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import { Oswald } from "next/font/google";
+import { useState } from "react";
 
 const oswald = Oswald({
   weight: ["600"],
@@ -13,19 +16,23 @@ interface ContentProps {
 }
 
 const Content: React.FC<ContentProps> = ({ heading,animeResult }) => {
+
+  const [genreState,setGenreState] = useState<boolean>(false)
+
   return (
     <div className="flex flex-col gap-6 px-6 pt-20 pb-5">
       <hr />
       <h1 className={`${oswald.className} text-2xl text-white font-bold`}>
         {heading}
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-[70%_25%] justify-between gap-6 ">
-        <div className="grid grid-cols-2   sm:grid-cols-4 gap-10 ">
-          {animeResult.map((anime) => (
-            <AnimeCard data={anime} />
-          ))}
+      <div className="relative grid grid-cols-1 sm:grid-cols-[70%_25%] justify-between gap-6 ">
+        <div className="flex flex-col gap-2">
+          <GenreFilter state={genreState} />
+          <AnimeCardContainer animeResult={animeResult} />
         </div>
-        <div></div>
+        <div className=" w-full">
+          <FilterComponent  genreState={genreState} getGenreState={setGenreState} />
+        </div>
       </div>
     </div>
   );
