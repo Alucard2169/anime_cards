@@ -44,8 +44,10 @@ const currentPage = router.pathname === "/" ? true : false;
       {isLoading ? (
         <Loading />
       ) : (
+          
         <div className="flex flex-col gap-2 relative w-full min-h-screen">
             <Navbar page={currentPage} />
+            
           {children}
       
         </div>
