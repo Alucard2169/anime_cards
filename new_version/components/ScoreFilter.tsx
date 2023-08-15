@@ -1,7 +1,16 @@
+import { useGetFilter } from "@/context/FilterContext";
 import React, { useState } from "react";
 
-const ScoreFilter: React.FC = () => {
+interface ScoreFilterProps {
+  handleFilter: (filterQuery: any) => void;
+ 
+}
+
+
+const ScoreFilter: React.FC<ScoreFilterProps> = ({ handleFilter }) => {
   
+  const contextValue = useGetFilter()
+  const { filter, setFilter } = contextValue;
   
   const stepValues = Array.from({ length: 91 }, (_, index) =>
     (index * 0.1).toFixed(1)
@@ -12,17 +21,36 @@ const ScoreFilter: React.FC = () => {
   const handleScoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newScore = event.target.value;
     setScore(newScore);
-   
   };
+
+
+  const handleScoreSubmit = () => {
+     
+     const updatedFilter = {
+       ...filter,
+       score: +score === 1 ? +score : +score/10,
+     };
+
+     setFilter(updatedFilter);
+     handleFilter(updatedFilter);
+   };
 
   return (
     <div>
-      <h3 className="text-purple-600">Score</h3>
+      <div className="flex items-center justify-between">
+        <h3 className="text-purple-600">Score</h3>
+        <button
+          className="bg-purple-600 text-black rounded-full py-1 px-2 font-bold hover:bg-purple-400"
+          onClick={handleScoreSubmit}
+        >
+          Submit
+        </button>
+      </div>
       <input
         className="mt-2 w-full h-2 light:bg-white-600 rounded-lg appearance-none cursor-pointer dark:bg-purple-700"
         type="range"
-        min={0}
-        max={100}
+        min={1}
+        max={99}
         step={1}
         value={parseFloat(score).toString()} // Convert the score to match the range values
         onChange={handleScoreChange}

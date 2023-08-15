@@ -1,9 +1,8 @@
   import { useGetFilter } from "@/context/FilterContext";
-import { FC, useCallback } from "react";
+import { FC, useCallback, useState } from "react";
+import { GrPowerReset } from 'react-icons/gr';
+import FilterOptions from "./FilterOptions";
 import ScoreFilter from "./ScoreFilter";
-import StatusFilter from "./StatusFilter";
-import TimeFilter from "./TimeFilter";
-import TypeFilter from "./TypeFilter";
 
 
 interface FilterOptionsProps {
@@ -23,7 +22,9 @@ interface FilterOptionsProps {
   const FilterComponent: FC<FilterComponentProps> = ({setData, genreState, getGenreState ,setIsLoading}) => {
     
     const contextValue = useGetFilter();
-    const {filter,setFilter } = contextValue;
+    const { filter, setFilter } = contextValue;
+    
+    const [reset,setReset] = useState(false)
 
 
       const handleGenreButtonClick = () => {
@@ -49,7 +50,7 @@ interface FilterOptionsProps {
               console.log(queries)
           const response = await fetch(
             queries.length > 0
-              ? `https://api.jikan.moe/v4/anime?${queries}&order_by=popularity`
+              ? `https://api.jikan.moe/v4/anime?${queries}&order_by=popularity&sfw`
               : `https://api.jikan.moe/v4/top/anime?filter=airing&sfw`
           );
           const responseResult = await response.json();
@@ -65,10 +66,49 @@ interface FilterOptionsProps {
       [filter]
     );
     
+      const typeOptions = [
+        { id: "tv", value: "tv" },
+        { id: "movie", value: "movie" },
+        { id: "special", value: "special" },
+        { id: "ova", value: "ova" },
+        { id: "ona", value: "ona" },
+        { id: "music", value: "music" },
+      ];
+    
+    const statusOptions = [
+      { id: 'airing', value: 'airing' },
+      { id: 'upcoming', value: 'upcoming' },
+      {id:'complete',value:'complete'}
+    ]
+
+   const timeOptions = [
+     { id: "2020-2023", value: "2020-01-01&end_date=2023-12-31" },
+     { id: "2015-2019", value: "2019-01-01 & end_date=2015-12 - 31" },
+     { id: "2014-2010", value: "2010-01-01&end_date=2014-12-31" },
+     { id: "2009-2005", value: "2009-01-01&end_date=2005-12-31" },
+     { id: "2004-2000", value: "2004-01-01&end_date=2000-12-31" },
+     { id: "1990s", value: "1990-01-01&end_date=1990-12-31" },
+     { id: "1980s", value: "1980-01-01&end_date=1980-12-31" },
+     { id: "1970s", value: "1970-01-01&end_date=1970-12-31" },
+   ];
+
+
+    const handleReset = () => {
+       const updatedFilter = {
+    type:'',status:'',score:null,start_date:"",
+    };
+setReset(true)
+    setFilter(updatedFilter);
+    handleFilter(updatedFilter);
+    }
+
     
       return (
         <div className="p-4  rounded-md bg-gray-900 w-full h-fit">
-          <h3 className="text-xl text-white font-bold">Filter</h3>
+          <div className="flex justify-between items-center">
+            <h3 className="text-xl text-white font-bold">Filter</h3>
+            <GrPowerReset className="bg-white p-1 rounded-full text-2xl cursor-pointer" onClick={handleReset}/>
+          </div>
           <section className="mt-4 flex flex-col gap-4">
             <button
               onClick={handleGenreButtonClick}
@@ -77,13 +117,31 @@ interface FilterOptionsProps {
               Filter By Genre
             </button>
             <hr />
-            <TypeFilter handleFilter={handleFilter} />
+            <FilterOptions
+              handleFilter={handleFilter}
+              data={typeOptions}
+              filterName={"type"}
+              heading={"Type"}
+              reset={reset}
+            />
             <hr />
-            <StatusFilter handleFilter={handleFilter} />
+            <FilterOptions
+              handleFilter={handleFilter}
+              data={statusOptions}
+              filterName={"status"}
+              heading={"Status"}
+              reset={reset}
+            />
             <hr />
-            <ScoreFilter handleFilter={handleFilter} />
+            <ScoreFilter handleFilter={handleFilter}/>
             <hr />
-            <TimeFilter handleFilter={handleFilter} />
+            <FilterOptions
+              handleFilter={handleFilter}
+              data={timeOptions}
+              filterName={"start_date"}
+              heading={"Time"}
+              reset={reset}
+            />
           </section>
         </div>
       );
