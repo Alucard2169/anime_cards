@@ -1,5 +1,4 @@
 import { MangaRelationProps } from "@/types/mangaInterfaces";
-import Link from "next/link";
 import { FC } from "react";
 
 
@@ -7,7 +6,8 @@ interface RelatedProps {
     data: MangaRelationProps[]
 }
 
-const Related:FC<RelatedProps> = ({ data }) => {
+const Related: FC<RelatedProps> = ({ data }) => {
+  console.log(data)
     return (
       <section>
         <h2 className="text-xl sm:text-2xl text-PRIMARY font-bold mb-4">
@@ -23,15 +23,9 @@ const Related:FC<RelatedProps> = ({ data }) => {
               <div>
                 {relation.entry.map((entry, j) => (
                   <h5 className=" w-fit p-1 text-PRIMARY" key={j}>
-                    <Link
-                      href={
-                        entry.type === "manga"
-                          ? `/manga/${entry.mal_id}`
-                          : `/anime/${entry.mal_id}`
-                      }
-                    >
+                 
                       {entry.name}
-                    </Link>
+                
                   </h5>
                 ))}
               </div>

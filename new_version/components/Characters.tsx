@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 interface CharacterProps {
@@ -11,7 +10,7 @@ const Characters: React.FC<CharacterProps> = ({ data }) => {
     const { mal_id, images, name } = character;
     const [visibility,setVisibility] = useState<number>(0)
     return (
-      <Link key={mal_id} href={`/characters/${mal_id}`}>
+    
         <div
           key={mal_id}
           className=" z-1 relative flex flex-col gap-2  w-32 max-w-fit h-52 rounded-md overflow-hidden"
@@ -37,7 +36,6 @@ const Characters: React.FC<CharacterProps> = ({ data }) => {
             <span>{favorite}</span>
           </div>
         </div>
-      </Link>
     );
 }
  

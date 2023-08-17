@@ -30,7 +30,7 @@ const Content: React.FC<ContentProps> = ({ heading, animeResult }) => {
       </h1>
       <div className="relative grid grid-cols-1 sm:grid-cols-[70%_25%] justify-between gap-6 ">
         <div className="flex flex-col gap-2">
-          <GenreFilter state={genreState} />
+          <GenreFilter state={genreState} setGenreState={setGenreState} setData={setData} setIsLoading={setIsLoading} />
           {isLoading ? <LoadingPrimary/> : <AnimeCardContainer animeResult={data} />}
         </div>
         <div className=" w-full">

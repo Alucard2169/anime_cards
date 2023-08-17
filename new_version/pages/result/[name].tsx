@@ -1,5 +1,4 @@
 import AnimeCardContainer from "@/components/AnimeCardContainer";
-import FilterComponent from "@/components/FilterComponent";
 import LoadingPrimary from "@/components/LoadingPrimary";
 import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import { FC, useCallback, useMemo, useState } from "react";
@@ -61,17 +60,12 @@ const Result: FC<ResultProps> = ({ animeResult }) => {
           />
         </label>
       </form>
-      <div className="relative grid grid-cols-1 sm:grid-cols-[70%_25%] justify-between gap-6">
+      <div className="relative mt-12 flex justify-center w-4/5 self-center">
         {isLoading ? (
-          <LoadingPrimary/>
+          <LoadingPrimary />
         ) : (
           <AnimeCardContainer animeResult={filteredAnimeResult} />
         )}
-
-        <FilterComponent
-          genreState={genreState}
-          getGenreState={setGenreState}
-        />
       </div>
     </div>
   );

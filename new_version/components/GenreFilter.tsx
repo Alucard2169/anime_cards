@@ -14,10 +14,15 @@ interface Data {
 
 interface GenreFilterProps {
   state: boolean;
+  setData: any;
+  setIsLoading: (newState: boolean) => void;
+  setGenreState: (newState: boolean) => void;
 }
 
 
-const GenreFilter: React.FC<GenreFilterProps> = ({ state }) => {
+const GenreFilter: React.FC<GenreFilterProps> = ({ state,setData,setIsLoading ,setGenreState}) => {
+
+ 
 
   const fetcher = async (args: any) => {
     const response = await fetch(args);
@@ -40,13 +45,38 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ state }) => {
     );
   };
 
+
+
+  const handleGenreData = async () => {
+  
+    try {
+      setIsLoading(true);
+      const genres = selectedGenres.join(",");
+      const response = await fetch(
+        `https://api.jikan.moe/v4/anime?genres=${genres}`
+      );
+      const genreResult = await response.json();
+      const data = genreResult.data;
+      setData(data);
+      setIsLoading(false);
+      setGenreState(false);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+    
+
+  }
+
   return (
     <div
       className={`bg-gray-900 rounded-md py-2 px-4 transition-all duration-200 ease-in-out ${
         state ? "opacity-100 h-full" : "opacity-0 h-0 pointer-events-none"
       }`}
     >
-      <h3 className="text-purple-600 font-bold text-xl">Genre</h3>
+      <div className="flex justify-between">
+        <h3 className="text-purple-600 font-bold text-xl">Genre</h3>
+       {selectedGenres.length !== 0 ?  <button className="bg-purple-600 p-1 px-4 font-bold text-white rounded-full   hover:bg-purple-900" onClick={handleGenreData} disabled={selectedGenres.length === 0}>Submit</button>:null}
+      </div>
 
       {selectedGenres.length > 0 && (
         <div className="mt-4 flex flex-col gap-2">
