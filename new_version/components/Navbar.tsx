@@ -18,7 +18,7 @@ const Navbar: FC<NavbarProps> = ({ page }) => {
           <li>
             <ul className='flex gap-2 sm:gap-6 items-center'>
               <li className='text-white text-xs sm:text-sm cursor-pointer hover:text-purple-600 transition-all duration-100'><Link href={`/${'top'}/content`}>Top Anime</Link></li>
-              <li className='text-white text-xs sm:text-sm cursor-pointer hover:text-purple-600 transition-all duration-100'>Random</li>
+             
             </ul>
           </li>
           <li>
