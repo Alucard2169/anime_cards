@@ -59,8 +59,8 @@ const AnimeDeatails: FC<AnimeProps> = ({
   return (
     <div className={`pt-20 px-2 sm:px-8 w-full gap-6 ${"animeDetailPage"}`}>
       <div className="w-full bg-PRIMARY_TWO p-3">
-        <section className="p-2 bg-PRIMARY w-fit flex flex-col items-center rounded-md gap-4">
-          <div className="w-44 h-3/5 sm:w-auto sm:h-auto border border-MAIN border-8 rounded-md overflow-hidden">
+        <section className="p-2 bg-purple-700 w-fit mx-auto flex flex-col items-center rounded-md gap-4">
+          <div className="w-44 h-3/5 sm:w-auto sm:h-auto  border-MAIN border-8 rounded-md overflow-hidden">
             <Image
               src={`${images.webp.large_image_url}`}
               alt={title || title_japanese}
@@ -68,7 +68,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
               height="400"
             />
           </div>
-          <h1 className="text-PRIMARY_TWO font-bold text-xl">
+          <h1 className="text-MAIN font-bold text-xl">
             {title || title_english}
           </h1>
           <h2 className="text-MAIN font-semibold text-lg">{title_japanese}</h2>
@@ -81,7 +81,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
               {titles.map((title, i) => (
                 <span
                   key={i}
-                  className="bg-MAIN text-PRIMARY text-sm w-full rounded-lg p-1 pl-4 font-semibold"
+                  className="bg-MAIN text-purple-600 text-sm w-full rounded-lg p-1 pl-4 font-semibold"
                 >
                   {title.title}
                 </span>

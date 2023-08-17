@@ -17,9 +17,10 @@ interface FilterOptionsProps {
     genreState: boolean;
     getGenreState: (newState: boolean) => void;
     setIsLoading: (newState: boolean) => void;
+    mobileVisible: boolean;
   }
 
-  const FilterComponent: FC<FilterComponentProps> = ({setData, genreState, getGenreState ,setIsLoading}) => {
+  const FilterComponent: FC<FilterComponentProps> = ({setData, genreState, getGenreState ,setIsLoading,mobileVisible}) => {
     
     const contextValue = useGetFilter();
     const { filter, setFilter } = contextValue;
@@ -104,10 +105,17 @@ setReset(true)
 
     
       return (
-        <div className="p-4  rounded-md bg-gray-900 w-full h-fit">
+        <div
+          className={`${
+            mobileVisible ? "visible" : 'hidden'
+          }  absolute z-20 sm:relative  top-0 p-4  rounded-md bg-gray-900 w-full h-fit`}
+        >
           <div className="flex justify-between items-center">
             <h3 className="text-xl text-white font-bold">Filter</h3>
-            <GrPowerReset className="bg-white p-1 rounded-full text-2xl cursor-pointer" onClick={handleReset}/>
+            <GrPowerReset
+              className="bg-white p-1 rounded-full text-2xl cursor-pointer"
+              onClick={handleReset}
+            />
           </div>
           <section className="mt-4 flex flex-col gap-4">
             <button
@@ -133,7 +141,7 @@ setReset(true)
               reset={reset}
             />
             <hr />
-            <ScoreFilter handleFilter={handleFilter}/>
+            <ScoreFilter handleFilter={handleFilter} />
             <hr />
             <FilterOptions
               handleFilter={handleFilter}

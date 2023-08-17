@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiFillCloseCircle } from 'react-icons/ai';
 import useSWR from "swr";
 
 interface Genre {
@@ -67,25 +68,30 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ state,setData,setIsLoading ,s
 
   }
 
+  const handleGenreDisplay = () => {
+    setGenreState(false)
+  }
+
   return (
     <div
-      className={`bg-gray-900 rounded-md py-2 px-4 transition-all duration-200 ease-in-out ${
+      className={`relative z-50 bg-gray-900 rounded-md py-2 px-4 transition-all duration-200 ease-in-out ${
         state ? "opacity-100 h-full" : "opacity-0 h-0 pointer-events-none"
       }`}
     >
       <div className="flex justify-between">
         <h3 className="text-purple-600 font-bold text-xl">Genre</h3>
+        <button className="visible sm:hidden" onClick={handleGenreDisplay}><AiFillCloseCircle className="bg-purple-600 text-white text-3xl p-1 rounded-full"/></button>
        {selectedGenres.length !== 0 ?  <button className="bg-purple-600 p-1 px-4 font-bold text-white rounded-full   hover:bg-purple-900" onClick={handleGenreData} disabled={selectedGenres.length === 0}>Submit</button>:null}
       </div>
 
       {selectedGenres.length > 0 && (
         <div className="mt-4 flex flex-col gap-2">
           <h4 className="text-purple-600 font-bold">Selected Genres:</h4>
-          <ul className="grid grid-cols-6 gap-5">
+          <ul className="grid grid-cols-4 sm:grid-cols-6 gap-5">
             {selectedGenres.map((genreId) => (
               <li
                 key={genreId}
-                className="bg-purple-400 rounded-full text-center font-bold"
+                className="bg-purple-400 rounded-full text-center text-xs w-fit px-1 sm:text-lg  font-bold"
               >
                 {data?.data.find((genre) => genre.mal_id === genreId)?.name}
               </li>
@@ -99,7 +105,7 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ state,setData,setIsLoading ,s
       ) : error ? (
         <p>Error loading data</p>
       ) : (
-        <ul className="grid grid-cols-5 gap-6 mt-4">
+        <ul className="grid grid-cols-2 sm:grid-cols-5 items-center gap-6 mt-4">
           {data?.data.map((genre) => (
             <li key={genre.mal_id}>
               <button
@@ -107,7 +113,7 @@ const GenreFilter: React.FC<GenreFilterProps> = ({ state,setData,setIsLoading ,s
                   selectedGenres.includes(genre.mal_id)
                     ? "outline-purple-600 bg-purple-600"
                     : "outline-transparent"
-                } text-white p-1 hover:outline-none hover:bg-purple-600 transition-all duration-400 cursor-pointer`}
+                } text-white text-xs sm:text-lg p-1 hover:outline-none hover:bg-purple-600 transition-all duration-400 cursor-pointer`}
                 onClick={() => toggleGenreSelection(genre.mal_id)}
               >
                 {genre.name}
