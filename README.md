@@ -1,7 +1,8 @@
 
 # Anime_cards
 
-# [LIVE SITE](https://violet-boa-slip.cyclic.app/)
+# [LIVE SITE (old version)](https://violet-boa-slip.cyclic.app/)
+# [LIVE SITE (new version)](https://anime-cards-alpha.vercel.app/)
 
 Anime Card is a prototype web application that let's you search and browse your favorite anime, it gives you a brief detail about every anime.
 
