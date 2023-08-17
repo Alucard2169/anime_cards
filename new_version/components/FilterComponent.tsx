@@ -64,7 +64,7 @@ interface FilterOptionsProps {
           console.log(error.message);
         }
       },
-      [filter]
+      [filter,setData,setIsLoading]
     );
     
       const typeOptions = [
@@ -84,10 +84,10 @@ interface FilterOptionsProps {
 
    const timeOptions = [
      { id: "2020-2023", value: "2020-01-01&end_date=2023-12-31" },
-     { id: "2015-2019", value: "2019-01-01 & end_date=2015-12 - 31" },
+     { id: "2015-2019", value: "2015-01-01&end_date=2019-12-31" },
      { id: "2014-2010", value: "2010-01-01&end_date=2014-12-31" },
-     { id: "2009-2005", value: "2009-01-01&end_date=2005-12-31" },
-     { id: "2004-2000", value: "2004-01-01&end_date=2000-12-31" },
+     { id: "2009-2005", value: "2005-01-01&end_date=2009-12-31" },
+     { id: "2004-2000", value: "2000-01-01&end_date=2004-12-31" },
      { id: "1990s", value: "1990-01-01&end_date=1990-12-31" },
      { id: "1980s", value: "1980-01-01&end_date=1980-12-31" },
      { id: "1970s", value: "1970-01-01&end_date=1970-12-31" },

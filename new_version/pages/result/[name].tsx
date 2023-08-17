@@ -1,7 +1,7 @@
 import AnimeCardContainer from "@/components/AnimeCardContainer";
 import LoadingPrimary from "@/components/LoadingPrimary";
 import { AnimeDetailsProps } from "@/types/animeIntefaces";
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { LiaSearchSolid } from "react-icons/lia";
 
 interface ResultProps {
@@ -11,7 +11,6 @@ interface ResultProps {
 const Result: FC<ResultProps> = ({ animeResult }) => {
   const [data, setData] = useState(animeResult);
   const [query, setQuery] = useState("");
-  const [genreState, setGenreState] = useState<boolean>(false);
   const [isLoading,setIsLoading] = useState<boolean>(false)
 
   const handleSubmit = useCallback(
@@ -40,10 +39,7 @@ const Result: FC<ResultProps> = ({ animeResult }) => {
     []
   );
 
-  const filteredAnimeResult = useMemo(() => {
-    // Apply filtering logic here based on genreState or any other criteria
-    return data;
-  }, [data, genreState]);
+
 
   return (
     <div className="px-6 pt-20 pb-5 flex flex-col gap-5">
@@ -64,7 +60,7 @@ const Result: FC<ResultProps> = ({ animeResult }) => {
         {isLoading ? (
           <LoadingPrimary />
         ) : (
-          <AnimeCardContainer animeResult={filteredAnimeResult} />
+          <AnimeCardContainer animeResult={data} />
         )}
       </div>
     </div>
