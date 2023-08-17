@@ -1,5 +1,5 @@
   import { useGetFilter } from "@/context/FilterContext";
-import { FC, useCallback, useState } from "react";
+import { FC, useState } from "react";
 import { GrPowerReset } from 'react-icons/gr';
 import FilterOptions from "./FilterOptions";
 import ScoreFilter from "./ScoreFilter";
@@ -32,7 +32,7 @@ interface FilterOptionsProps {
         getGenreState(!genreState);
       };
     
-    const handleFilter = useCallback(
+    const handleFilter = 
       async (filterQuery: FilterOptionsProps) => {
         try {
           setIsLoading(true);
@@ -63,9 +63,7 @@ interface FilterOptionsProps {
           setIsLoading(false);
           console.log(error.message);
         }
-      },
-      [filter,setData,setIsLoading]
-    );
+      }
     
       const typeOptions = [
         { id: "tv", value: "tv" },
