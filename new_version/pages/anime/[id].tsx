@@ -4,9 +4,8 @@ import Related from '@/components/Related';
 import { AnimeDetailsProps } from "@/types/animeIntefaces";
 import { SeriesCharacterProps } from '@/types/characterInterfaces';
 import Image from 'next/image';
-import Link from 'next/link';
 import { FC, useState } from 'react';
-import { AiFillCaretRight, AiFillPlayCircle } from "react-icons/ai";
+import { AiFillPlayCircle } from "react-icons/ai";
 import { BiLinkExternal } from 'react-icons/bi';
 
 
@@ -211,15 +210,7 @@ const AnimeDeatails: FC<AnimeProps> = ({
               <Characters data={character} key={i} />
             ))}
           </div>
-          <button className=" text-lg text-PRIMARY font-bold ">
-            <Link
-              className="flex items-center"
-              href={`/anime/characters/${mal_id}`}
-            >
-              {" "}
-              View All characters <AiFillCaretRight className="text-2xl" />
-            </Link>
-          </button>
+       
         </section>
         <hr />
         {streaming.length > 0 && (
