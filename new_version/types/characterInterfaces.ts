@@ -39,6 +39,7 @@ export interface WebProps {
 
 export interface SeriesCharacterProps {
   character: CharacterProps;
+  mal_id: number;
   role: string;
   favorite: number;
 }

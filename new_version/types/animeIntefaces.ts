@@ -45,12 +45,13 @@ export interface AnimeDetailsProps {
   title_english: string;
   title_japanese: string;
   type: string;
+  theme: ThemeProps;
   year: null | number;
   streaming: StreamingProps[];
   relations: MangaRelationProps[];  
 }
 
-interface StreamingProps {
+export interface StreamingProps {
   name: string;
   url: string;
 }
@@ -62,7 +63,7 @@ interface DemographicsProps {
   url: string;
 }
 
-interface GenersProps {
+export interface GenersProps {
   mal_id: number;
   name: string;
   type: string;
@@ -77,7 +78,7 @@ interface ProducersProps {
 }
 
 
-interface StudioProps {
+export interface StudioProps {
   mal_id: number;
   type: string;
   name: string;
@@ -97,7 +98,13 @@ interface TrailerProps {
   embed_url: string | null;
 }
 
-interface TitlesProps {
+export interface TitlesProps {
   type: string;
   title: string;
+}
+
+
+export interface ThemeProps{
+  openings: string[];
+  endings: string[];
 }

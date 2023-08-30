@@ -12,9 +12,11 @@ module.exports = {
         PRIMARY: "#F66C62",
         PRIMARY_TWO: "#4E596F",
         NUTRAL: "#FFFFFF",
+        TEXT_PRIMARY: "#E54B4B",
+        TEXT_NEUTRAL: "#F7EBE8",
       },
       backgroundImage: {
-        "heroBackground": "url('/mainBackground.webp')",
+        heroBackground: "url('/mainBackground.webp')",
       },
     },
   },
