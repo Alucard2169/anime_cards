@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({ page }) => {
             <Image src={logo} alt="logo" width="30" height="30" />
           </Link>
         </li>
-        {route.pathname !== '/auth' ? 
+        {route.pathname !== "/auth" ? (
           <>
             <li className="text-white ml-auto text-xs sm:text-sm cursor-pointer hover:text-purple-600 transition-all duration-100">
               <Link href={`/${"top"}/content`}>Top Anime</Link>
@@ -32,14 +32,13 @@ const Navbar: FC<NavbarProps> = ({ page }) => {
             <li className="ml-auto mr-5">
               <SearchBar />
             </li>
+            <li>
+              <button className="ml-auto bg-purple-600  text-white font-semibold rounded-md p-1 text-sm hover:bg-MAIN transition-all duration-100">
+                <Link href={`/auth`}>Sign-in</Link>
+              </button>
+            </li>
           </>
-        :null}
-
-        <li>
-          <button className="ml-auto bg-purple-600  text-white font-semibold rounded-md p-1 text-sm hover:bg-MAIN transition-all duration-100">
-            <Link href={`/auth`}>Sign-in</Link>
-          </button>
-        </li>
+        ) : null}
       </ul>
     </nav>
   );

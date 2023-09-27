@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AiFillGoogleCircle } from 'react-icons/ai';
 import { GiAstronautHelmet, GiRocketThruster } from "react-icons/gi";
 
 const Auth = () => {
@@ -16,11 +17,11 @@ const Auth = () => {
         ) : (
           <GiAstronautHelmet className="text-purple-500 text-3xl" />
         )}
-        <form className="w-2/5 border py-10 border-white-2 rounded-md">
-          <div className="flex flex-col m-auto gap-8 w-2/3">
+        <form className="w-1/3 border py-8 border-white-2 rounded-md">
+          <div className="flex flex-col m-auto gap-6 w-2/3">
             {formType !== "login" ? (
-              <label htmlFor="username" className="flex flex-col gap-4">
-                <span className="text-md text-white">Username</span>
+              <label htmlFor="username" className="flex flex-col gap-2">
+                <span className="text-sm text-white">Username</span>
                 <input
                   type="text"
                   name="username"
@@ -31,7 +32,7 @@ const Auth = () => {
               </label>
             ) : null}
             <label htmlFor="email" className="flex flex-col gap-2">
-              <span className="text-md text-white">Email</span>
+              <span className="text-sm text-white">Email</span>
               <input
                 type="email"
                 name="email"
@@ -41,7 +42,7 @@ const Auth = () => {
               />
             </label>
             <label htmlFor="password" className="flex flex-col gap-2">
-              <span className="text-md text-white">Password</span>
+              <span className="text-sm text-white">Password</span>
               <input
                 type="password"
                 name="password"
@@ -50,13 +51,14 @@ const Auth = () => {
                 required
               />
             </label>
+            <button className="text-white m-auto border border-white-1 rounded-md p-2 flex gap-2 items-center" type="button"><AiFillGoogleCircle className="text-xl"/>Continue with Google</button>
             <input
               type="submit"
               value="SUBMIT"
               className="text-white border border-white-1 w-fit rounded-md p-2 m-auto cursor-pointer hover:bg-purple-500 hover:text-white  transition-all duration-200 ease-linear"
             />
           </div>
-          <p className="mt-10text-blue-500 ml-10">
+          <p className="mt-6 text-blue-500 ml-10">
             {formType === "login" ? "New User ? " : "Already a user? "}
             <button type="button" className="text-white" onClick={handleFormType}>
               {formType === "login" ? "sign-up" : "login"}
