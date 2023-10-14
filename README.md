@@ -9,7 +9,3 @@ Anime Card is a prototype web application that let's you search and browse your 
 # Contributing
 
 If you would like to contribute to Anime_cards, feel free to submit a pull request with your changes. Please be sure to include a description of your changes and an explanation of why they are needed.
-
-# Credits
-
-Anime_cards was created by Alucard2169.
