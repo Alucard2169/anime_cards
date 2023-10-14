@@ -10,13 +10,13 @@
 
 ---
 
-* [jikan API]("https://jikan.moe/")
+* [jikan API](https://jikan.moe/)
   
-* [NextJS]("https://nextjs.org/")
+* [NextJS](https://nextjs.org/)
 
-* [tailwindCSS]("https://tailwindcss.com/")
+* [tailwindCSS](https://tailwindcss.com/)
 
-* [typescript]("https://www.typescriptlang.org/")
+* [typescript](https://www.typescriptlang.org/)
 
 
 ---
