@@ -39,7 +39,7 @@ A basic API request to Jikan API looks like this
  ---
  ## Homepage preview
  
- ![Anime Cards Homepage](https://github.com/Alucard2169/Anime_cards/blob/main/Screenshot%202022-09-26%20at%2009-43-31%20Anime%20Cards.png?raw=true)
+ ![https://github.com/Alucard2169/Anime_cards/old_Version/blob/main/Screenshot%202022-09-26%20at%2009-43-31%20Anime%20Cards.png?raw=true](https://github.com/Alucard2169/anime_cards/blob/main/old_Version/Screenshot%202022-09-26%20at%2009-43-31%20Anime%20Cards.png?raw=true)
  
  
  
