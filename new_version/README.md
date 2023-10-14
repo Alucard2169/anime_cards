@@ -23,4 +23,4 @@
 
 # Homepage
 
-![homepage]("https://github.com/Alucard2169/anime_cards/blob/main/new_version/public/Screenshot%202023-10-14%20at%2012-45-01%20Anime%20Cards.png?raw=true")
+![HOMEPAGE](https://github.com/Alucard2169/anime_cards/blob/4449767b212d2f1a7b20e22b81ab125696d1d9fd/new_version/public/Screenshot%202023-10-14%20at%2012-45-01%20Anime%20Cards.png)
