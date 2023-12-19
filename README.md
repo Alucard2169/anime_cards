@@ -1,15 +1,26 @@
+# Anime Cards
 
-# Anime_cards
+> Anime cards is a fun project built with NextJS, tailwind CSS and JikanAPI.
+
+> It lets users to view their favorite Anime
+
+> Provides **Filter** and **search** functionality.
+
+> Provides Link to official Streaming Platforms.
+
+---
+
+* [jikan API](https://jikan.moe/)
+  
+* [NextJS](https://nextjs.org/)
+
+* [tailwindCSS](https://tailwindcss.com/)
+
+* [typescript](https://www.typescriptlang.org/)
 
 
-# [LIVE SITE (new version)](https://anime-cards-alpha.vercel.app/)
+---
 
+# Homepage
 
-# [LIVE SITE (old version)](https://violet-boa-slip.cyclic.app/)
-
-
-Anime Card is a prototype web application that let's you search and browse your favorite anime, it gives you a brief detail about every anime.
-
-# Contributing
-
-If you would like to contribute to Anime_cards, feel free to submit a pull request with your changes. Please be sure to include a description of your changes and an explanation of why they are needed.
+![HOMEPAGE](https://github.com/Alucard2169/anime_cards/blob/4449767b212d2f1a7b20e22b81ab125696d1d9fd/new_version/public/Screenshot%202023-10-14%20at%2012-45-01%20Anime%20Cards.png)
